@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia WM - Desde 2021 | Estilo & Tradição</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="image-removebg-preview.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wmDark: '#352118',
+                        wmDarker: '#24150f',
+                        wmDarkCard: '#2d1b13',
+                        wmGold: '#D8C09B',
+                        wmGoldLight: '#f1e4d1',
+                        wmGoldDark: '#b89d75'
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #24150f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D8C09B;
+            border-radius: 4px;
+        }
+        
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(216, 192, 155, 0.15);
+            transition: all 0.3s ease;
+        }
+        .gold-border-glow:hover {
+            box-shadow: 0 0 25px rgba(216, 192, 155, 0.35);
+            border-color: #D8C09B;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0D6 0%, #D8C09B 50%, #B59368 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #D8C09B 0%, #b89d75 100%);
+        }
+
+        .gold-gradient-bg:hover {
+            background: linear-gradient(135deg, #e4d0b1 0%, #c4a980 100%);
+        }
+
+        /* Nav active link states */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: #D8C09B;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px rgba(216, 192, 155, 0.8);
+        }
+
+        .nav-link.active-nav {
+            color: #D8C09B !important;
+            font-weight: 700;
+        }
+
+        .nav-link.active-nav::after {
+            width: 100%;
+        }
+
+        /* Mobile active nav link */
+        .mobile-nav-link.active-nav {
+            color: #D8C09B !important;
+            font-weight: 700;
+            background-color: rgba(216, 192, 155, 0.1);
+            border-left: 4px solid #D8C09B;
+            padding-left: 12px;
+        }
+
+        /* Modal styling */
+        .modal-active {
+            display: flex !important;
+        }
+    </style>
+</head>
+<body class="bg-wmDark text-gray-200 font-sans antialiased overflow-x-hidden">
+
+    <!-- Top Information Bar -->
+    <div class="bg-wmDarker border-b border-wmGold/20 py-2 text-xs md:text-sm text-wmGoldLight/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-6">
+                <a class="hover:text-wmGold transition-colors" href="https://maps.app.goo.gl/kN9mAYPs7R5gHRbcA" target="_blank"><span><i class="fa-solid fa-location-dot text-wmGold mr-2"></i>R. Dilermando Réis, 921 - Santa Lúcia</span></a>
+                <span class="hidden sm:inline"><i class="fa-solid fa-clock text-wmGold mr-2"></i>Ter - Sáb: 08h às 20h | Dom: 08h às 12h</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="tel:82987498857" class="hover:text-wmGold transition-colors">
+                    <i class="fa-solid fa-phone text-wmGold mr-1"></i> (82) 98749-8857
+                </a>
+                <span class="text-wmGold/40">|</span>
+                <div class="flex space-x-3 text-wmGold">
+                    <a href="https://www.instagram.com/barbearia_wm21/" class="hover:text-white transition-colors" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://api.whatsapp.com/send/?phone=5582987498857&text=Ol%C3%A1%21+Gostaria+de+agendar+um+hor%C3%A1rio+na+Barbearia+WM.&type=phone_number&app_absent=0" class="hover:text-white transition-colors" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header / Navigation -->
+    <header class="sticky top-0 z-40 bg-wmDark/95 backdrop-blur-md border-b border-wmGold/20 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-full border border-wmGold/40 bg-wmDarker p-1 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-md">
+                        <img src="image-removebg-preview.png" alt="Barbearia WM Logo" class="w-full h-full object-contain filter drop-shadow">
+                    </div>
+                    <div>
+                        <span class="font-serif text-xl sm:text-2xl font-bold tracking-widest text-wmGold block leading-tight">BARBEARIA WM</span>
+                        <span class="text-[10px] text-gray-400 tracking-widest uppercase block font-medium">Desde 2021 • Excelência</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#inicio" data-section="inicio" class="nav-link active-nav text-gray-300 hover:text-wmGold transition-colors">Início</a>
+                    <a href="#sobre" data-section="sobre" class="nav-link text-gray-300 hover:text-wmGold transition-colors">Sobre Nós</a>
+                    <a href="#servicos" data-section="servicos" class="nav-link text-gray-300 hover:text-wmGold transition-colors">Serviços</a>
+                    <a href="#diferenciais" data-section="diferenciais" class="nav-link text-gray-300 hover:text-wmGold transition-colors">Diferenciais</a>
+                    <a href="#depoimentos" data-section="depoimentos" class="nav-link text-gray-300 hover:text-wmGold transition-colors">Depoimentos</a>
+                    <a href="#contato" data-section="contato" class="nav-link text-gray-300 hover:text-wmGold transition-colors">Contato</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden lg:flex items-center">
+                    <button onclick="openBookingModal()" class="gold-gradient-bg text-wmDark font-bold py-2.5 px-5 rounded-md hover:shadow-lg hover:shadow-wmGold/20 transition-all transform hover:-translate-y-0.5 text-sm uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        Agendar Horário
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-wmGold focus:outline-none p-2">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-wmDarker border-b border-wmGold/20 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" data-section="inicio" class="mobile-nav-link active-nav block py-2 text-gray-300 hover:text-wmGold font-medium border-b border-wmGold/10 transition-all">Início</a>
+            <a href="#sobre" data-section="sobre" class="mobile-nav-link block py-2 text-gray-300 hover:text-wmGold font-medium border-b border-wmGold/10 transition-all">Sobre Nós</a>
+            <a href="#servicos" data-section="servicos" class="mobile-nav-link block py-2 text-gray-300 hover:text-wmGold font-medium border-b border-wmGold/10 transition-all">Serviços</a>
+            <a href="#diferenciais" data-section="diferenciais" class="mobile-nav-link block py-2 text-gray-300 hover:text-wmGold font-medium border-b border-wmGold/10 transition-all">Diferenciais</a>
+            <a href="#depoimentos" data-section="depoimentos" class="mobile-nav-link block py-2 text-gray-300 hover:text-wmGold font-medium border-b border-wmGold/10 transition-all">Depoimentos</a>
+            <a href="#contato" data-section="contato" class="mobile-nav-link block py-2 text-gray-300 hover:text-wmGold font-medium border-b border-wmGold/10 transition-all">Contato</a>
+            <button onclick="openBookingModal()" class="w-full mt-3 gold-gradient-bg text-wmDark font-bold py-3 px-4 rounded-md uppercase text-sm tracking-wider flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                Agendar via WhatsApp
+            </button>
+        </div>
+    </header>
+
+    <section id="inicio" class="relative min-h-[88vh] flex items-center justify-center bg-wmDark py-20 overflow-hidden">
+        <!-- Subtle Pattern & Vignette Background -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(216,192,155,0.08)_0%,transparent_70%)] pointer-events-none"></div>
+        <div class="absolute -top-32 -right-32 w-96 h-96 bg-wmGold/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-wmGold/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Text Content -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-wmGold/30 bg-wmDarker/80 text-wmGold text-xs sm:text-sm font-medium tracking-wider uppercase">
+                        <i class="fa-solid fa-crown text-xs"></i>
+                        <span>Experiência Premium Desde 2021</span>
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Estilo, Tradição & <span class="gold-gradient-text block mt-1">Excelência no Seu Visual</span>
+                    </h1>
+
+                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        O cuidado que seu cabelo e sua barba merecem. Desfrute de um ambiente exclusivo com atendimento personalizado, profissionais de ponta e bebida cortesia.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <button onclick="openBookingModal()" class="w-full sm:w-auto gold-gradient-bg text-wmDark font-bold py-4 px-8 rounded-lg shadow-xl hover:shadow-wmGold/20 transition-all transform hover:-translate-y-1 uppercase text-sm tracking-wider flex items-center justify-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            Agendar Pelo WhatsApp
+                        </button>
+                        <a href="#servicos" class="w-full sm:w-auto border border-wmGold/40 hover:border-wmGold text-wmGold hover:text-white hover:bg-wmGold/10 font-semibold py-4 px-8 rounded-lg transition-all text-center text-sm uppercase tracking-wider">
+                            Ver Tabela de Serviços
+                        </a>
+                    </div>
+
+                    <!-- Direct Contact Teaser -->
+                    <div class="pt-6 border-t border-wmGold/15 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs sm:text-sm text-gray-400">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-check text-wmGold"></i> Sem filas de espera</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-beer-mug-empty text-wmGold"></i> Chopp / Café Grátis</span>
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-wifi text-wmGold"></i> Wi-Fi & Estacionamento</span>
+                    </div>
+                </div>
+
+                <!-- WM Emblem Visual Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full border-4 border-wmGold/40 p-4 bg-wmDarker/90 gold-border-glow flex items-center justify-center text-center group">
+                        <!-- Decorative Circular Border -->
+                        <div class="absolute inset-2 rounded-full border border-dashed border-wmGold/30"></div>
+                        
+                        <div class="space-y-2 z-10 p-6 flex flex-col items-center justify-center">
+                            <img src="image-removebg-preview.png" alt="Barbearia WM - Emblem" class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-contain filter drop-shadow-[0_0_15px_rgba(216,192,155,0.3)] transition-transform duration-500 group-hover:scale-105">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-wmDarker py-12 border-y border-wmGold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                
+                <div class="p-4 border-r border-wmGold/10 last:border-0">
+                    <div class="text-3xl sm:text-4xl font-serif font-bold text-wmGold mb-1">+3.000</div>
+                    <p class="text-xs sm:text-sm text-gray-300 uppercase tracking-wider font-medium">Clientes Atendidos</p>
+                </div>
+
+                <div class="p-4 border-r border-wmGold/10 last:border-0">
+                    <div class="text-3xl sm:text-4xl font-serif font-bold text-wmGold mb-1 flex items-center justify-center gap-1">
+                        4.9 <i class="fa-solid fa-star text-sm text-wmGold"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-300 uppercase tracking-wider font-medium">Avaliação Google & Social</p>
+                </div>
+
+                <div class="p-4 border-r border-wmGold/10 last:border-0">
+                    <div class="text-3xl sm:text-4xl font-serif font-bold text-wmGold mb-1">2021</div>
+                    <p class="text-xs sm:text-sm text-gray-300 uppercase tracking-wider font-medium">Ano de Fundada</p>
+                </div>
+
+                <div class="p-4">
+                    <div class="text-3xl sm:text-4xl font-serif font-bold text-wmGold mb-1">100%</div>
+                    <p class="text-xs sm:text-sm text-gray-300 uppercase tracking-wider font-medium">Bebida Cortesia</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-20 bg-wmDark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Graphic Box -->
+                <div class="relative">
+                    <div class="bg-wmDarkCard border border-wmGold/30 p-8 rounded-2xl gold-border-glow relative z-10">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 rounded-full bg-wmDarker border border-wmGold/50 p-1 flex items-center justify-center shrink-0">
+                                <img src="image-removebg-preview.png" alt="Barbearia WM" class="w-full h-full object-contain">
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-xl font-bold text-white">Barbearia WM</h3>
+                                <p class="text-xs text-wmGold">Tradição & Modernidade Desde 2021</p>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Fundada em 2021, a Barbearia WM nasceu com o propósito de redefinir a experiência masculina no cuidado pessoal. Mais do que um simples corte de cabelo ou barba feita, oferecemos um refúgio de relaxamento e estilo no meio da rotina.
+                        </p>
+
+                        <div class="space-y-3 text-sm text-gray-300">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-wmGold"></i>
+                                <span>Profissionais altamente capacitados e em constante atualização</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-wmGold"></i>
+                                <span>Toalha quente com óleos essenciais para a barba</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-wmGold"></i>
+                                <span>Produtos capilares de alta performance</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Background Accent Card Behind -->
+                    <div class="absolute -bottom-4 -right-4 w-full h-full border-2 border-wmGold/20 rounded-2xl -z-0 hidden sm:block"></div>
+                </div>
+
+                <!-- Right Narrative -->
+                <div class="space-y-6">
+                    <span class="text-wmGold font-medium text-xs uppercase tracking-widest">Nossa História</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight">
+                        Respeito ao seu tempo e dedicação ao seu estilo.
+                    </h2>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                        Na Barbearia WM, acreditamos que a imagem pessoal é a porta de entrada para a confiança. Por isso, desde 2021 refinamos nossas técnicas de visagismo masculino para entregar resultados que combinam com o formato do seu rosto, seu estilo de vida e sua personalidade.
+                    </p>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                        Sentar em nossa cadeira significa ter a garantia de um trabalho minucioso, acompanhado de uma boa conversa e uma bebida gelada de sua preferência.
+                    </p>
+
+                    <div class="pt-4">
+                        <button onclick="openBookingModal()" class="gold-gradient-bg text-wmDark font-bold py-3 px-6 rounded-lg uppercase text-xs tracking-wider inline-flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-check"></i>
+                            Reserve Sua Cadeira Agora
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="py-20 bg-wmDarker relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-wmGold font-medium text-xs uppercase tracking-widest">Tabela Premium</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-2">Nossos Serviços</h2>
+                <div class="w-16 h-1 bg-wmGold mx-auto mt-4 rounded-full"></div>
+                <p class="text-gray-400 text-sm mt-4">Todos os serviços incluem bebida cortesia (Cerveja, Café Expresso ou Uísque).</p>
+            </div>
+
+            <!-- Service Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Service 1 -->
+                <div class="bg-wmDarkCard border border-wmGold/20 rounded-xl p-6 flex flex-col justify-between hover:border-wmGold transition-all duration-300 group gold-border-glow">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-wmDarker border border-wmGold/30 flex items-center justify-center text-wmGold text-xl mb-4 group-hover:bg-wmGold group-hover:text-wmDark transition-colors">
+                            <i class="fa-solid fa-scissors"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-white mb-2">Corte Clássico & Moderno</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                            Lavagem com xampu especial, corte personalizado de acordo com visagismo e finalização com pomada premium.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-serif font-bold text-wmGold mb-4">R$ 50,00</div>
+                        <button onclick="openBookingModal('Corte Clássico & Moderno')" class="w-full border border-wmGold text-wmGold hover:bg-wmGold hover:text-wmDark py-2 px-4 rounded font-semibold text-xs uppercase tracking-wider transition-all">
+                            Agendar Corte
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-wmDarkCard border border-wmGold/20 rounded-xl p-6 flex flex-col justify-between hover:border-wmGold transition-all duration-300 group gold-border-glow">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-wmDarker border border-wmGold/30 flex items-center justify-center text-wmGold text-xl mb-4 group-hover:bg-wmGold group-hover:text-wmDark transition-colors">
+                            <i class="fa-solid fa-user-ninja"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-white mb-2">Barba com Toalha Quente</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                            Rituais de toalha quente com óleos essenciais, barbear com navalhete e pós-barba calmante e hidratante.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-serif font-bold text-wmGold mb-4">R$ 45,00</div>
+                        <button onclick="openBookingModal('Barba com Toalha Quente')" class="w-full border border-wmGold text-wmGold hover:bg-wmGold hover:text-wmDark py-2 px-4 rounded font-semibold text-xs uppercase tracking-wider transition-all">
+                            Agendar Barba
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 3 (HIGHLIGHTED COMBO) -->
+                <div class="bg-gradient-to-b from-wmDarkCard to-wmDarker border-2 border-wmGold rounded-xl p-6 flex flex-col justify-between relative shadow-2xl transform lg:-translate-y-2">
+                    <div class="absolute -top-3 right-4 bg-wmGold text-wmDark text-[10px] font-extrabold uppercase px-3 py-1 rounded-full shadow">
+                        Mais Pedido
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-wmGold text-wmDark flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-white mb-2">Combo WM Completo</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                            Corte + Barba completa com toalha quente + Sobrancelha + Bebida cortesia premium da sua escolha.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-400 line-through">De R$ 95,00</div>
+                        <div class="text-3xl font-serif font-extrabold text-wmGold mb-4">R$ 80,00</div>
+                        <button onclick="openBookingModal('Combo WM Completo')" class="w-full gold-gradient-bg text-wmDark font-bold py-2.5 px-4 rounded text-xs uppercase tracking-wider transition-all hover:shadow-lg">
+                            Agendar Combo WM
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-wmDarkCard border border-wmGold/20 rounded-xl p-6 flex flex-col justify-between hover:border-wmGold transition-all duration-300 group gold-border-glow">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-wmDarker border border-wmGold/30 flex items-center justify-center text-wmGold text-xl mb-4 group-hover:bg-wmGold group-hover:text-wmDark transition-colors">
+                            <i class="fa-solid fa-spray-can"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-white mb-2">Pigmentação & Tratamento</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                            Disfarce de fios brancos ou falhas no cabelo/barba, além de hidratação e reestruturação capilar profunda.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-serif font-bold text-wmGold mb-4">R$ 40,00</div>
+                        <button onclick="openBookingModal('Pigmentação & Tratamento')" class="w-full border border-wmGold text-wmGold hover:bg-wmGold hover:text-wmDark py-2 px-4 rounded font-semibold text-xs uppercase tracking-wider transition-all">
+                            Agendar Tratamento
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="diferenciais" class="py-20 bg-wmDark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-wmGold font-medium text-xs uppercase tracking-widest">Por Que a Barbearia WM?</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-2">Diferenciais Que Impressionam</h2>
+                <div class="w-16 h-1 bg-wmGold mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-wmDarkCard/60 border border-wmGold/15 p-8 rounded-xl text-center space-y-4 hover:border-wmGold/40 transition-all">
+                    <div class="w-16 h-16 rounded-full bg-wmDarker border border-wmGold/40 flex items-center justify-center text-wmGold text-2xl mx-auto">
+                        <i class="fa-solid fa-whiskey-glass"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white">Bar & Bebidas Cortesia</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Chegue mais cedo e aproveite nosso lounge. Servimos chopp trincando de gelado, café espresso especial ou uísque para você relaxar.
+                    </p>
+                </div>
+
+                <div class="bg-wmDarkCard/60 border border-wmGold/15 p-8 rounded-xl text-center space-y-4 hover:border-wmGold/40 transition-all">
+                    <div class="w-16 h-16 rounded-full bg-wmDarker border border-wmGold/40 flex items-center justify-center text-wmGold text-2xl mx-auto">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white">Espaço de Convivência</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Mesa de sinuca, transmissão de jogos de futebol ao vivo e ambiente climatizado para transformar sua ida à barbearia num momento de lazer.
+                    </p>
+                </div>
+
+                <div class="bg-wmDarkCard/60 border border-wmGold/15 p-8 rounded-xl text-center space-y-4 hover:border-wmGold/40 transition-all">
+                    <div class="w-16 h-16 rounded-full bg-wmDarker border border-wmGold/40 flex items-center justify-center text-wmGold text-2xl mx-auto">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white">Atendimento Pontual</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Valorizamos o seu tempo. Com nosso agendamento via WhatsApp, você é atendido exatamente no horário marcado, sem esperas desnecessárias.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="depoimentos" class="py-20 bg-wmDarker border-t border-wmGold/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-wmGold font-medium text-xs uppercase tracking-widest">Opinião de Quem Confia</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-2">O Que Dizem Nossos Clientes</h2>
+                <div class="w-16 h-1 bg-wmGold mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Review 1 -->
+                <div class="bg-wmDarkCard border border-wmGold/20 p-6 rounded-xl space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-wmGold text-sm mb-3">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm italic">
+                            "A Barbearia WM é sensacional. Faço a barba com a toalha quente e o resultado é impecável. Sem falar no atendimento e na cerveja gelada de cortesia!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-wmGold/10 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-wmGold/20 border border-wmGold flex items-center justify-center font-bold text-wmGold">
+                            RL
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-white">Rodrigo Lima</h4>
+                            <p class="text-xs text-gray-400">Cliente desde 2021</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-wmDarkCard border border-wmGold/20 p-6 rounded-xl space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-wmGold text-sm mb-3">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm italic">
+                            "Lugar top demais! Pontualidade 100%, ambiente confortável e profissionais que realmente entendem do assunto. Recomendo o Combo WM."
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-wmGold/10 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-wmGold/20 border border-wmGold flex items-center justify-center font-bold text-wmGold">
+                            MA
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-white">Mateus Andrade</h4>
+                            <p class="text-xs text-gray-400">Cliente Frequente</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-wmDarkCard border border-wmGold/20 p-6 rounded-xl space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-wmGold text-sm mb-3">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm italic">
+                            "Melhor barbearia da cidade sem dúvidas. Frequento desde que abriram em 2021 e a qualidade nunca caiu. Nota dez!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-wmGold/10 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-wmGold/20 border border-wmGold flex items-center justify-center font-bold text-wmGold">
+                            GS
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-white">Gabriel Santos</h4>
+                            <p class="text-xs text-gray-400">Cliente Frequente</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-20 bg-wmDark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-wmGold font-medium text-xs uppercase tracking-widest">Entre em Contato</span>
+                    <h2 class="font-serif text-3xl font-bold text-white">Agende Seu Horário ou Faça uma Visita</h2>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Estamos prontos para lhe atender com o mais alto padrão. Preencha o formulário para enviar seu pedido via WhatsApp ou entre em contato diretamente.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-wmDarker border border-wmGold/30 flex items-center justify-center text-wmGold shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Endereço</h4>
+                                <a class="hover:text-wmGold transition-colors" href="https://maps.app.goo.gl/kN9mAYPs7R5gHRbcA" target="_blank"><p class="hover:text-wmGold text-xs text-gray-400">R. Dilermando Réis, 921 - Santa Lúcia, Maceió - AL</p></a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-wmDarker border border-wmGold/30 flex items-center justify-center text-wmGold shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Telefone & WhatsApp</h4>
+                                <p class="text-xs text-gray-400">(82) 98749-8857</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-wmDarker border border-wmGold/30 flex items-center justify-center text-wmGold shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Horário de Funcionamento</h4>
+                                <p class="text-xs text-gray-400">Terça a Sábado: 08:00 - 20:00</p>
+                                <p class="text-xs text-gray-400">Domingo: 08:00 - 12:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Form Column -->
+                <div class="lg:col-span-7">
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="bg-wmDarkCard border border-wmGold/30 p-8 rounded-2xl space-y-4 shadow-xl">
+                        <h3 class="font-serif text-xl font-bold text-white mb-2">Agendamento Rápido</h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1">Seu Nome *</label>
+                                <input type="text" id="formName" required placeholder="Ex: João Silva" class="w-full bg-wmDarker border border-wmGold/20 rounded-lg px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-wmGold">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1">Seu Telefone *</label>
+                                <input type="tel" id="formPhone" required placeholder="(82) 98749-8857" class="w-full bg-wmDarker border border-wmGold/20 rounded-lg px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-wmGold">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1">Serviço Desejado *</label>
+                                <select id="formService" class="w-full bg-wmDarker border border-wmGold/20 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-wmGold">
+                                    <option value="Corte Clássico & Moderno">Corte Clássico & Moderno (R$ 50)</option>
+                                    <option value="Barba com Toalha Quente">Barba com Toalha Quente (R$ 45)</option>
+                                    <option value="Combo WM Completo" selected>Combo WM Completo (R$ 80)</option>
+                                    <option value="Pigmentação & Tratamento">Pigmentação & Tratamento (R$ 40)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-1">Data Preferencial *</label>
+                                <input type="date" id="formDate" required class="w-full bg-wmDarker border border-wmGold/20 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-wmGold">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-gray-300 mb-1">Horário Desejado *</label>
+                            <input type="time" id="formTime" required class="w-full bg-wmDarker border border-wmGold/20 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-wmGold">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-gray-300 mb-1">Observações (Opcional)</label>
+                            <textarea id="formObs" rows="3" placeholder="Preferência de barbeiro, bebida de escolha..." class="w-full bg-wmDarker border border-wmGold/20 rounded-lg px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-wmGold"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full gold-gradient-bg text-wmDark font-bold py-3.5 px-6 rounded-lg uppercase text-sm tracking-wider flex items-center justify-center gap-2 hover:shadow-lg">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            Enviar Agendamento via WhatsApp
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-wmDarker border-t border-wmGold/20 py-12 text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                
+                <!-- Logo Footer -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full border border-wmGold/40 bg-wmDark p-1 flex items-center justify-center">
+                        <img src="image-removebg-preview.png" alt="Barbearia WM Logo" class="w-full h-full object-contain">
+                    </div>
+                    <div>
+                        <span class="font-serif text-lg font-bold text-wmGold block leading-tight">BARBEARIA WM</span>
+                        <span class="text-[10px] text-gray-400 tracking-widest uppercase block">Est. 2021</span>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="text-center text-xs text-gray-500">
+                    &copy; 2021-2026 Barbearia WM. Todos os direitos reservados.
+                </div>
+
+                <!-- Socials -->
+                <div class="flex space-x-4 text-wmGold">
+                    <a href="https://www.instagram.com/barbearia_wm21/" class="w-9 h-9 rounded-full bg-wmDark border border-wmGold/20 flex items-center justify-center hover:bg-wmGold hover:text-wmDark transition-colors">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://api.whatsapp.com/send/?phone=5582987498857&text=Ol%C3%A1%21+Gostaria+de+agendar+um+hor%C3%A1rio+na+Barbearia+WM.&type=phone_number&app_absent=0" class="w-9 h-9 rounded-full bg-wmDark border border-wmGold/20 flex items-center justify-center hover:bg-wmGold hover:text-wmDark transition-colors">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5582987498857?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Barbearia%20WM." target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:bg-green-500 hover:scale-110 transition-all border-2 border-white/20" title="Falar no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-wmDarkCard border border-wmGold max-w-md w-full rounded-2xl p-6 relative shadow-2xl space-y-4">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-wmGold text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center">
+                <div class="w-16 h-16 rounded-full border border-wmGold/50 bg-wmDarker p-1 flex items-center justify-center mx-auto mb-2 shadow-lg">
+                    <img src="image-removebg-preview.png" alt="Barbearia WM Logo" class="w-full h-full object-contain">
+                </div>
+                <h3 class="font-serif text-xl font-bold text-white">Agende Seu Horário</h3>
+                <p class="text-xs text-wmGold mt-1">Barbearia WM - Desde 2021</p>
+            </div>
+
+            <form onsubmit="handleModalSubmit(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs text-gray-300 mb-1">Seu Nome</label>
+                    <input type="text" id="modalName" required class="w-full bg-wmDarker border border-wmGold/20 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-wmGold">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-300 mb-1">Serviço Selecionado</label>
+                    <select id="modalService" class="w-full bg-wmDarker border border-wmGold/20 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-wmGold">
+                        <option value="Corte Clássico & Moderno">Corte Clássico & Moderno</option>
+                        <option value="Barba com Toalha Quente">Barba com Toalha Quente</option>
+                        <option value="Combo WM Completo">Combo WM Completo</option>
+                        <option value="Pigmentação & Tratamento">Pigmentação & Tratamento</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-xs text-gray-300 mb-1">Data</label>
+                        <input type="date" id="modalDate" required class="w-full bg-wmDarker border border-wmGold/20 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-wmGold">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-300 mb-1">Horário</label>
+                        <input type="time" id="modalTime" required class="w-full bg-wmDarker border border-wmGold/20 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-wmGold">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full gold-gradient-bg text-wmDark font-bold py-3 rounded uppercase text-xs tracking-wider flex items-center justify-center gap-2 mt-4">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    Confirmar via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Mobile Navigation Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on clicking links
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Modal Controls
+        function openBookingModal(serviceName = '') {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('modal-active');
+            if (serviceName) {
+                const serviceSelect = document.getElementById('modalService');
+                if (serviceSelect) {
+                    serviceSelect.value = serviceName;
+                }
+            }
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('modal-active');
+        }
+
+        // Redirect To WhatsApp with pre-filled message
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('formName').value;
+            const phone = document.getElementById('formPhone').value;
+            const service = document.getElementById('formService').value;
+            const date = document.getElementById('formDate').value;
+            const time = document.getElementById('formTime').value;
+            const obs = document.getElementById('formObs').value;
+
+            const message = `*Agendamento - Barbearia WM*%0A%0A` +
+                `*Nome:* ${encodeURIComponent(name)}%0A` +
+                `*Telefone:* ${encodeURIComponent(phone)}%0A` +
+                `*Serviço:* ${encodeURIComponent(service)}%0A` +
+                `*Data:* ${encodeURIComponent(date)}%0A` +
+                `*Horário:* ${encodeURIComponent(time)}%0A` +
+                (obs ? `*Obs:* ${encodeURIComponent(obs)}` : '');
+
+            window.open(`https://wa.me/5582987498857?text=${message}`, '_blank');
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('modalName').value;
+            const service = document.getElementById('modalService').value;
+            const date = document.getElementById('modalDate').value;
+            const time = document.getElementById('modalTime').value;
+
+            const message = `*Agendamento - Barbearia WM*%0A%0A` +
+                `*Nome:* ${encodeURIComponent(name)}%0A` +
+                `*Serviço:* ${encodeURIComponent(service)}%0A` +
+                `*Data:* ${encodeURIComponent(date)}%0A` +
+                `*Horário:* ${encodeURIComponent(time)}`;
+
+            window.open(`https://wa.me/5582987498857?text=${message}`, '_blank');
+            closeBookingModal();
+        }
+
+        /* -------------------------------------------------------------
+           Scroll Spy / Dynamic Header Highlighting Logic
+        ------------------------------------------------------------- */
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const desktopNavLinks = document.querySelectorAll('nav .nav-link');
+            const mobileNavLinks = document.querySelectorAll('#mobileMenu .mobile-nav-link');
+
+            function setActiveSection(currentId) {
+                // Update Desktop Nav
+                desktopNavLinks.forEach(link => {
+                    if (link.getAttribute('data-section') === currentId) {
+                        link.classList.add('active-nav');
+                    } else {
+                        link.classList.remove('active-nav');
+                    }
+                });
+
+                // Update Mobile Nav
+                mobileNavLinks.forEach(link => {
+                    if (link.getAttribute('data-section') === currentId) {
+                        link.classList.add('active-nav');
+                    } else {
+                        link.classList.remove('active-nav');
+                    }
+                });
+            }
+
+            // IntersectionObserver setup
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px', // Highlights as the section approaches top/center
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Fallback for direct edge cases (top/bottom of the page)
+            window.addEventListener('scroll', () => {
+                if (window.scrollY < 100) {
+                    setActiveSection('inicio');
+                } else if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+                    setActiveSection('contato');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
