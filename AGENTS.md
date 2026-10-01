@@ -88,8 +88,8 @@ Detalhe completo em `docs/MAPA.md`. Resumo:
 | CSS próprio (texturas, animações, nav, cards) | `<style>`, linhas 41–125 |
 | Seções | `#inicio`, `#sobre`, `#servicos`, `#diferenciais`, `#contato`, `<footer>` |
 | JS: menu mobile | linhas 499–509 |
-| JS: destacar link ativo no menu | linhas 512–537 |
-| JS: revelar ao rolar + barra de progresso | linhas 540–563 |
+| JS: destacar link ativo no menu | linhas 512–542 |
+| JS: revelar ao rolar + barra de progresso | linhas 545–568 |
 
 ## Pegadinhas conhecidas
 

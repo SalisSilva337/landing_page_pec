@@ -519,10 +519,15 @@
                 });
             }
 
+            const visiveis = new Set();   // Set = lista sem repetição
+
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) setActiveSection(entry.target.id);
+                    if (entry.isIntersecting) visiveis.add(entry.target);
+                    else visiveis.delete(entry.target);
                 });
+                const atual = [...sections].findLast(s => visiveis.has(s));  // a mais de baixo
+                if (atual) setActiveSection(atual.id);
             }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
 
             sections.forEach(s => observer.observe(s));

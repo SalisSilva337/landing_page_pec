@@ -1,6 +1,6 @@
 # Mapa da landing page
 
-O que existe em `barbearia_wm_landing_page.html`, de cima para baixo. As linhas são da versão atual (566 linhas); quando o código for separado, atualize este arquivo.
+O que existe em `barbearia_wm_landing_page.html`, de cima para baixo. As linhas são da versão atual (571 linhas); quando o código for separado, atualize este arquivo.
 
 > Para a IA: ao EXPLICAR, use este mapa para localizar o trecho e cite a linha. Ao REFATORAR, atualize as linhas aqui depois.
 
@@ -33,7 +33,7 @@ O que existe em `barbearia_wm_landing_page.html`, de cima para baixo. As linhas 
 | 117–121, 124 | Acessibilidade | `prefers-reduced-motion`: desliga animações para quem pediu no sistema |
 | 123 | Acessibilidade | `:focus-visible` com contorno dourado ao navegar por teclado |
 
-## `<body>` (linhas 127–566)
+## `<body>` (linhas 127–571)
 
 A ordem visual da página:
 
@@ -49,7 +49,7 @@ A ordem visual da página:
 | 397–462 | Contato | `#contato` | couro | Endereço, telefone, horário, Instagram; card com botões WhatsApp e Maps |
 | 464–488 | Rodapé | `<footer>` | `leatherDeep` | Logo, copyright 2021–2026, ícones sociais |
 | 490–496 | WhatsApp flutuante | — | verde | Botão fixo no canto inferior direito com `animate-ping` |
-| 498–564 | `<script>` | — | — | JavaScript (detalhado abaixo) |
+| 498–569 | `<script>` | — | — | JavaScript (detalhado abaixo) |
 
 ### Padrões que se repetem no HTML
 
@@ -62,7 +62,7 @@ Vale conhecer porque aparecem muitas vezes (e porque, sem build, não dá para t
 - **Link do WhatsApp**: a mesma URL `https://wa.me/5582987498857?text=...` aparece 7 vezes.
 - **Logo**: `imgs/image-removebg-preview (1).png` aparece 6 vezes (favicon, header, hero, sobre, contato, rodapé).
 
-## JavaScript (`<script>`, linhas 498–564)
+## JavaScript (`<script>`, linhas 498–569)
 
 Três blocos independentes. Nenhum depende do outro.
 
@@ -73,14 +73,15 @@ Três blocos independentes. Nenhum depende do outro.
 - Ao clicar em qualquer link dentro do menu: fecha o menu.
 - Roda direto (sem `DOMContentLoaded`) porque o `<script>` está no fim do `<body>`, então os elementos já existem.
 
-### 2. Link ativo no menu (linhas 512–537)
+### 2. Link ativo no menu (linhas 512–542)
 
 - Observa todas as `section[id]` com um `IntersectionObserver`.
-- `rootMargin: '-20% 0px -60% 0px'` cria uma "faixa" no meio da tela: a seção que cruza essa faixa vira a ativa.
+- `rootMargin: '-20% 0px -60% 0px'` cria uma "faixa" no meio da tela (de 20% a 40% da altura, contada do topo).
+- Guarda num `Set` (`visiveis`) as seções que estão na faixa agora: entra na lista quando o aviso é `true` e sai quando é `false`. Depois escolhe a **última** da lista com `findLast`, isto é, a mais de baixo no HTML. Agir também no `false` evita o bug em que Diferenciais ficava sem destaque ao subir a partir do fim da página.
 - `setActiveSection(id)` liga/desliga `.active-nav` nos links que têm `data-section` igual ao `id`.
 - O `scroll` extra trata dois casos que o observer erra: topo da página (força `inicio`) e fim da página (força `contato`, porque a última seção pode ser curta demais para cruzar a faixa).
 
-### 3. Revelar ao rolar + barra de progresso (linhas 540–563)
+### 3. Revelar ao rolar + barra de progresso (linhas 545–568)
 
 - Seleciona blocos específicos das seções (`#sobre .grid > div`, `#servicos .grid > div` etc.).
 - Para cada um: calcula a posição entre os irmãos (`idx`), define `--d = idx * 0.12s` (atraso em cascata) e adiciona `.reveal`.

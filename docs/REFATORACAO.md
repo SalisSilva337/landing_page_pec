@@ -1,6 +1,6 @@
 # Plano de refatoração
 
-Objetivo: sair de **um arquivo de 566 linhas** para uma estrutura em que cada arquivo tem uma responsabilidade clara — e que qualquer pessoa do time consiga ler sozinha.
+Objetivo: sair de **um arquivo de 571 linhas** para uma estrutura em que cada arquivo tem uma responsabilidade clara — e que qualquer pessoa do time consiga ler sozinha.
 
 Regra de ouro: **a página fica idêntica**. Refatoração que muda visual ou comportamento não é refatoração.
 
@@ -77,9 +77,9 @@ Uma sub-etapa por arquivo, um commit cada:
 Uma sub-etapa por arquivo, um commit cada:
 
 - [ ] 5a. `js/menu-mobile.js` ← linhas 499–509.
-- [ ] 5b. `js/nav-ativa.js` ← linhas 512–537.
-- [ ] 5c. `js/revelar-scroll.js` ← linhas 541–556 (seleção de alvos + observer de reveal).
-- [ ] 5d. `js/barra-progresso.js` ← linhas 558–562 (o handler do `#scrollBar`). Hoje está no mesmo `DOMContentLoaded` do reveal; separar é seguro porque um não usa nada do outro.
+- [ ] 5b. `js/nav-ativa.js` ← linhas 512–542.
+- [ ] 5c. `js/revelar-scroll.js` ← linhas 546–561 (seleção de alvos + observer de reveal).
+- [ ] 5d. `js/barra-progresso.js` ← linhas 563–567 (o handler do `#scrollBar`). Hoje está no mesmo `DOMContentLoaded` do reveal; separar é seguro porque um não usa nada do outro.
 - [ ] Cada arquivo começa com comentário de 2–4 linhas (o que faz, que elementos usa, por quê).
 - [ ] No HTML, cada trecho extraído vira `<script src="js/nome.js" defer></script>` no `<head>`, logo após os `<link>` de CSS. Padrão decidido: **`defer` no `<head>`**. Durante 5a–5d é normal o `<script>` inline restante conviver com os externos no fim do `<body>`; ao fim da 5d, a tag inline some.
 
