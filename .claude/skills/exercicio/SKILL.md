@@ -1,6 +1,6 @@
 ---
 name: exercicio
-description: Gera um exercício curto de front-end a partir de um trecho real da landing page da Barbearia WM, para o estudante fazer no DevTools (F12) sem editar arquivo — em três níveis (observar, prever, modificar), com gabarito escondido e ligação ao glossário. Só leitura no código. Use em "me dá um exercício sobre X", "quero praticar o IntersectionObserver", "cria um desafio da seção de serviços".
+description: Gera um exercício curto de front-end a partir de um trecho real da landing page da Barbearia WM, para o estudante fazer no DevTools (F12) sem editar arquivo — em três níveis (observar, prever, modificar), com gabarito entregue só depois da resposta do estudante e ligação ao glossário. Só leitura no código. Use em "me dá um exercício sobre X", "quero praticar o IntersectionObserver", "cria um desafio da seção de serviços".
 ---
 
 # /exercicio — praticar com o código real
@@ -21,7 +21,15 @@ Igual à skill `explicar`: `Grep` em `docs/MAPA.md` → linhas → `Read` do HTM
 | **prever** | Lê o código, escreve o que vai acontecer **antes** de testar, depois testa | "Se o `rootMargin` fosse `'0px'`, quando o link 'Serviços' ficaria dourado? Escreva sua previsão, depois mude no Console e role." |
 | **modificar** | Altera no Console/Elements e observa, depois explica | "No Console: `document.querySelector('.float-y').style.animationDuration = '1s'`. O que mudou? Por que a `glow` também acelerou?" |
 
-## Formato (siga exatamente)
+## Formato (siga exatamente) — em DUAS mensagens
+
+O gabarito **nunca** vai na mesma mensagem do enunciado: `<details>` pode aparecer aberto na tela do estudante e estraga o exercício.
+
+- **Mensagem 1:** só a parte 1 (enunciado), terminando com a linha de parada. **Pare aí.**
+- **Mensagem 2:** a parte 2 (gabarito), só depois que o estudante responder, ou pedir "gabarito" / "desisto".
+- Se ele responder com a própria explicação, **corrija o que estiver errado e confirme o que estiver certo** antes de dar o gabarito completo.
+
+### Parte 1: enunciado
 
 ```
 ## Exercício — <alvo> — nível <observar|prever|modificar>
@@ -37,21 +45,25 @@ Igual à skill `explicar`: `Grep` em `docs/MAPA.md` → linhas → `Read` do HTM
 
 **Dica.** 1 frase. Aponte um termo: `ver docs/GLOSSARIO.md › <Termo>`.
 
-<details><summary>Gabarito</summary>
+**Para desfazer.** F5. (Ou: "nada foi alterado em arquivo".)
 
-<resposta completa, com o porquê; se for "prever", diga o que acontece e por quê>
+_Faça a tarefa e me conte o que viu. Quando quiser conferir, peça "gabarito"._
+```
 
-</details>
+### Parte 2: gabarito (mensagem seguinte)
+
+```
+## Gabarito — <alvo>
+
+<resposta completa, numerada como a Tarefa, com o porquê; se for "prever", diga o que acontece e por quê>
 
 **O que você levou daqui.** 1–2 frases: o conceito, nomeado.
-
-**Para desfazer.** F5. (Ou: "nada foi alterado em arquivo".)
 ```
 
 ## Regras
 
 - Um exercício por chamada. Pedido genérico → escolha **um** trecho e diga por que ele.
 - Toda mudança proposta é no DevTools; nunca "edite o arquivo". Se o estudante quiser mudar o arquivo de verdade, é decisão do time, fora da IA.
-- Gabarito **sempre** dentro de `<details>`.
+- Gabarito **sempre** em mensagem separada, depois da resposta do estudante. Nunca junto do enunciado, nem em `<details>`.
 - Não invente comportamento: se não tem certeza do resultado, teste com `/verificar-pagina`-style no navegador ou diga "confira você".
 - Se o usuário pedir "salva": `Write` em `docs/exercicios/<slug-do-alvo>-<nivel>.md` com o mesmo conteúdo. Só nesse caso escreve arquivo.
