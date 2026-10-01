@@ -1,0 +1,5 @@
+# Saídas da skill /verificar-pagina (impressões digitais antes/depois) — locais, não versionar
+.claude/verificacao/
+
+# Configuração pessoal do Claude Code
+.claude/settings.local.json
