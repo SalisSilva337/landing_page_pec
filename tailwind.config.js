@@ -1,5 +1,7 @@
-// Cores da marca e fontes. Precisa carregar logo depois do CDN do Tailwind, sem defer.
-tailwind.config = {
+// Configuração do Tailwind CLI: onde procurar classes, cores da marca e fontes.
+// Depois de mudar classes no HTML/JS ou este arquivo, gere o CSS de novo (ver README, "Tailwind").
+module.exports = {
+    content: ['./index.html', './js/**/*.js'],
     theme: {
         extend: {
             colors: {

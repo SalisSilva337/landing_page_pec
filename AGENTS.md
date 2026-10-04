@@ -65,7 +65,7 @@ Critérios fortes permitem iterar sozinho. Critérios fracos ("faz funcionar") e
 ## Contexto deste projeto
 
 - Landing page da **Barbearia WM** (Maceió/AL), feita por estudantes em um projeto de extensão do CESMAC. Também é um projeto de estudo de front-end, então explicações didáticas são bem-vindas.
-- Stack atual: HTML + Tailwind CSS via CDN + CSS próprio + JavaScript puro. HTML em `index.html`, CSS em `css/`, JS em `js/` (scripts clássicos, sem `type="module"`, para abrir com dois cliques). Sem build, sem npm. Mudar isso é uma decisão do time, listada no to-do do `README.md`.
+- Stack atual: HTML + Tailwind CSS v3 compilado + CSS próprio + JavaScript puro. HTML em `index.html`, CSS em `css/`, JS em `js/` (scripts clássicos, sem `type="module"`, para abrir com dois cliques). Sem npm. O único build é o Tailwind CLI standalone gerando `css/tailwind.css`, que fica commitado: ao usar uma classe do Tailwind que não existia no projeto, regenere (comando no README, sem `--minify`). Nunca edite `css/tailwind.css` à mão. Mudar isso é uma decisão do time, listada no to-do do `README.md`.
 - Para abrir: dois cliques no `.html`, ou `.claude/launch.json` sobe um servidor local na porta 8765.
 - Onde está cada coisa: `docs/MAPA.md`. Termos explicados: `docs/GLOSSARIO.md`. Números de linha nos docs podem estar defasados; confira no arquivo.
 - To-do e dívidas técnicas: `README.md`. Ao concluir um item, marque lá.

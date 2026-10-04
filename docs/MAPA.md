@@ -1,21 +1,23 @@
 # Mapa da landing page
 
-O que existe no projeto e onde está. O HTML fica em `index.html` (400 linhas); o CSS em `css/` e o JavaScript em `js/`. Quando mudar o código, atualize as linhas aqui.
+O que existe no projeto e onde está. O HTML fica em `index.html` (398 linhas); o CSS em `css/` e o JavaScript em `js/`. Quando mudar o código, atualize as linhas aqui.
 
-Tudo continua sem build: são arquivos `.css` e `.js` comuns, ligados por `<link>` e `<script src>`. Por isso a página abre com dois cliques no `index.html`.
+A página abre com dois cliques no `index.html`: são arquivos `.css` e `.js` comuns, ligados por `<link>` e `<script src>`. O único passo de build é gerar `css/tailwind.css` com o Tailwind CLI, e o resultado fica commitado (ver README, "Tailwind").
 
 
 ## Arquivos
 
 ```
 index.html                só a estrutura (HTML)
+tailwind.config.js        Tailwind: onde procurar classes, cores da marca e fontes
+tailwind.input.css        entrada do Tailwind CLI (não é carregado pela página)
 css/
+  tailwind.css            GERADO pelo Tailwind CLI a partir das classes usadas; não editar à mão
   base.css                scrollbar, foco por teclado, prefers-reduced-motion
   texturas.css            .leather-texture, .marble-texture, .stitch, .stitch-dark
   componentes.css         .bronze-gradient-*, .nav-link, .mobile-nav-link, .card-lift, .divider
   animacoes.css           @keyframes + .hero-in, .hero-pop, .spin-slow, .float-y, .snip, .crown-bob, .reveal
 js/
-  tailwind.config.js      cores da marca e fontes
   menu-mobile.js          abre/fecha o menu no celular
   nav-ativa.js            destaca o link do menu da seção visível
   revelar-scroll.js       animação de entrada dos blocos ao rolar
@@ -24,7 +26,7 @@ imgs/
   logo.webp               logo, 640×640 (favicon, header, hero, sobre, contato, rodapé)
 ```
 
-## `<head>` (`index.html`, linhas 1–23)
+## `<head>` (`index.html`, linhas 1–21)
 
 | Linhas | O que é | Para que serve |
 |---|---|---|
@@ -32,11 +34,10 @@ imgs/
 | 6–7 | `<title>` e `<meta name="description">` | O que aparece na aba do navegador e no Google |
 | 8 | `<link rel="icon">` | Ícone da aba (favicon), usa o logo |
 | 9 | `classList.add('js')` | Marca que o JS está ativo. Sem isso, o CSS esconderia os `.reveal` para sempre. Fica embutido (não em arquivo) porque precisa rodar antes da página aparecer |
-| 11 | `<script src="https://cdn.tailwindcss.com">` | Carrega o Tailwind (gera as classes utilitárias em tempo real) |
-| 12–14 | Google Fonts | Fontes Cinzel (títulos) e Montserrat (texto); `preconnect` acelera a conexão |
-| 15 | Font Awesome 6.4 | Ícones (`fa-scissors`, `fa-whatsapp` etc.) |
-| 17 | `js/tailwind.config.js` | Cores da marca e fontes. Tem que vir **depois** do CDN (usa o objeto `tailwind`) e sem `defer` |
-| 19–22 | `css/*.css` | CSS próprio, nesta ordem: base, texturas, componentes, animações |
+| 11–13 | Google Fonts | Fontes Cinzel (títulos) e Montserrat (texto); `preconnect` acelera a conexão |
+| 14 | Font Awesome 6.4 | Ícones (`fa-scissors`, `fa-whatsapp` etc.) |
+| 16–19 | `css/*.css` | CSS próprio, nesta ordem: base, texturas, componentes, animações |
+| 20 | `css/tailwind.css` | Classes utilitárias do Tailwind. Vem **por último**, na mesma posição em que o antigo CDN injetava o CSS dele, para as regras se sobreporem igual |
 
 ## CSS próprio (`css/`)
 
@@ -53,23 +54,23 @@ imgs/
 | `animacoes.css` | Animações | `@keyframes` `fadeUp`, `popIn`, `spinSlow`, `floatY`, `snip`, `glow`, `bob` e as classes que os usam (`.hero-in`, `.hero-pop`, `.spin-slow`, `.float-y`, `.snip`, `.crown-bob`) |
 | `animacoes.css` | Revelar ao rolar | `.js .reveal` começa invisível; `.visible` dispara `fadeUp` com atraso `--d` |
 
-## `<body>` (`index.html`, linhas 24–400)
+## `<body>` (`index.html`, linhas 22–398)
 
 A ordem visual da página:
 
 | Linhas | Bloco | `id` | Fundo | O que tem |
 |---|---|---|---|---|
-| 26 | Barra de progresso | `#scrollBar` | bronze | Linha de 3px no topo que cresce com a rolagem (controlada por JS) |
-| 28–48 | Barra superior | — | `leatherDeep` | Endereço (link para Maps), horário, telefone, ícones Instagram/WhatsApp |
-| 50–96 | Cabeçalho fixo | `<header>` | `leather/95` + blur | Logo + nome, menu desktop (5 links), botão WhatsApp, botão hambúrguer `#mobileMenuBtn`, menu mobile `#mobileMenu` (começa `hidden`) |
-| 98–145 | Hero | `#inicio` | couro | Selo "desde 2021", título com gradiente, parágrafo, 2 botões (ver serviços / WhatsApp), emblema circular girando e flutuando |
-| 147–193 | Sobre | `#sobre` | mármore | Card escuro com logo e 3 checks; título, 2 parágrafos, botão "Ver como chegar" |
-| 195–256 | Serviços | `#servicos` | `leatherDeep` | 4 cards: Corte R$ 28, **Corte e barba R$ 38** (destacado "Mais pedido"), Barba R$ 15, Corte com luzes R$ 70 |
-| 258–292 | Diferenciais | `#diferenciais` | areia | 3 cards: Ordem de chegada, Profissionais experientes, Preço justo |
-| 294–359 | Contato | `#contato` | couro | Endereço, telefone, horário, Instagram; card com botões WhatsApp e Maps |
-| 361–385 | Rodapé | `<footer>` | `leatherDeep` | Logo, copyright 2021–2026, ícones sociais |
-| 387–393 | WhatsApp flutuante | — | verde | Botão fixo no canto inferior direito com `animate-ping` |
-| 395–398 | `<script src>` | — | — | Os 4 arquivos de `js/` (detalhados abaixo) |
+| 24 | Barra de progresso | `#scrollBar` | bronze | Linha de 3px no topo que cresce com a rolagem (controlada por JS) |
+| 26–46 | Barra superior | — | `leatherDeep` | Endereço (link para Maps), horário, telefone, ícones Instagram/WhatsApp |
+| 48–94 | Cabeçalho fixo | `<header>` | `leather/95` + blur | Logo + nome, menu desktop (5 links), botão WhatsApp, botão hambúrguer `#mobileMenuBtn`, menu mobile `#mobileMenu` (começa `hidden`) |
+| 96–143 | Hero | `#inicio` | couro | Selo "desde 2021", título com gradiente, parágrafo, 2 botões (ver serviços / WhatsApp), emblema circular girando e flutuando |
+| 145–191 | Sobre | `#sobre` | mármore | Card escuro com logo e 3 checks; título, 2 parágrafos, botão "Ver como chegar" |
+| 193–254 | Serviços | `#servicos` | `leatherDeep` | 4 cards: Corte R$ 28, **Corte e barba R$ 38** (destacado "Mais pedido"), Barba R$ 15, Corte com luzes R$ 70 |
+| 256–290 | Diferenciais | `#diferenciais` | areia | 3 cards: Ordem de chegada, Profissionais experientes, Preço justo |
+| 292–357 | Contato | `#contato` | couro | Endereço, telefone, horário, Instagram; card com botões WhatsApp e Maps |
+| 359–383 | Rodapé | `<footer>` | `leatherDeep` | Logo, copyright 2021–2026, ícones sociais |
+| 385–391 | WhatsApp flutuante | — | verde | Botão fixo no canto inferior direito com `animate-ping` |
+| 393–396 | `<script src>` | — | — | Os 4 arquivos de `js/` (detalhados abaixo) |
 
 ### Padrões que se repetem no HTML
 
@@ -77,14 +78,14 @@ Vale conhecer porque aparecem muitas vezes (e porque, sem build, não dá para t
 
 - **Container**: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8` — centraliza e limita a largura. Aparece em toda seção.
 - **Título de seção**: `font-serif text-3xl sm:text-4xl font-bold` + `.divider` com tesoura logo abaixo.
-- **Card de serviço** (4x, linhas 207–252): `bg-leatherCard stitch rounded-xl p-6 ... card-lift group` → ícone em quadrado → `h3` → `p` → preço.
-- **Ícone em caixa** (contato, linhas 308–330): `w-10 h-10 rounded-lg bg-leatherDeep border border-bronze/40 ...`.
+- **Card de serviço** (4x, linhas 205–250): `bg-leatherCard stitch rounded-xl p-6 ... card-lift group` → ícone em quadrado → `h3` → `p` → preço.
+- **Ícone em caixa** (contato, linhas 306–328): `w-10 h-10 rounded-lg bg-leatherDeep border border-bronze/40 ...`.
 - **Link do WhatsApp**: a mesma URL `https://wa.me/5582987498857?text=...` aparece 7 vezes.
 - **Logo**: `imgs/logo.webp` aparece 6 vezes (favicon, header, hero, sobre, contato, rodapé).
 
 ## JavaScript (`js/`)
 
-Quatro arquivos independentes, carregados no fim do `<body>` (linhas 395–398). Nenhum depende do outro. São scripts comuns (não `type="module"`), por isso funcionam também abrindo o arquivo direto, sem servidor.
+Quatro arquivos independentes, carregados no fim do `<body>` (linhas 393–396). Nenhum depende do outro. São scripts comuns (não `type="module"`), por isso funcionam também abrindo o arquivo direto, sem servidor.
 
 ### `menu-mobile.js`
 
@@ -115,6 +116,5 @@ Quatro arquivos independentes, carregados no fim do `<body>` (linhas 395–398).
 
 | O quê | De onde | Observação |
 |---|---|---|
-| Tailwind CSS | `cdn.tailwindcss.com` | Versão de desenvolvimento (Play CDN). Funciona sem build, mas é mais pesada que um CSS compilado. Decisão do projeto: manter. |
 | Cinzel, Montserrat | Google Fonts | |
 | Font Awesome 6.4.0 | cdnjs | Só CSS; os ícones são classes `fa-*` |
