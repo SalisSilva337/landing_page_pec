@@ -11,7 +11,7 @@ Não precisa instalar nada.
 1. Clone o repositório.
 2. Dê dois cliques em `index.html` **ou** abra a pasta no VS Code e use "Open with Live Server".
 
-Precisa de internet: fontes e ícones vêm de CDN.
+Precisa de internet só para as fontes (Google Fonts).
 
 ## Tailwind: gerar o CSS
 
@@ -33,7 +33,7 @@ Não use `--minify`: ele converte as cores para `hsla()` com arredondamento, e a
 
 ```
 index.html                       estrutura da página (HTML)
-css/                             CSS próprio (base, texturas, componentes, animações)
+css/                             CSS próprio (base, texturas, componentes, animações, ícones) e o tailwind.css gerado
 js/                              os 4 scripts da página
 imgs/                            logo da barbearia
 tailwind.config.js               Tailwind: onde procurar classes, cores da marca e fontes
@@ -54,7 +54,8 @@ CLAUDE.md                        ponteiro para AGENTS.md (Claude Code)
 - **Tailwind CSS** v3, compilado com o Tailwind CLI para `css/tailwind.css` (ver "Tailwind: gerar o CSS"). As cores da marca e as fontes estão em `tailwind.config.js`.
 - **CSS próprio** para o que o Tailwind não cobre: texturas de couro e mármore, animações, sublinhado do menu.
 - **JavaScript puro** para: menu mobile, destaque do link ativo, animação de entrada ao rolar e barra de progresso.
-- Fontes **Cinzel** e **Montserrat** (Google Fonts) e ícones **Font Awesome 6**.
+- Fontes **Cinzel** e **Montserrat** (Google Fonts).
+- Ícones em **SVG** embutidos em `css/icones.css` (desenhos do Font Awesome Free 6.4, licença CC BY 4.0).
 
 ## To-do
 
@@ -109,7 +110,7 @@ O que não está pronto para produção, em ordem de impacto:
 | **Sem meta Open Graph** | O botão principal do site manda para o WhatsApp, mas o link do site, quando compartilhado no WhatsApp, aparece sem imagem nem descrição. |
 | **URL do WhatsApp repetida 7 vezes** | Trocar o número exige localizar e substituir em 7 lugares. |
 | **Copyright "2021–2026" fixo** | Precisa de edição manual todo ano. |
-| **Fontes e ícones via CDN** | Sem internet, a página abre sem as fontes e sem os ícones (o layout e as cores ficam, porque o CSS é local). |
+| **Fontes via CDN** | Sem internet, os textos caem para a fonte padrão do sistema (layout, cores e ícones ficam, porque são locais). |
 
 ## Como contribuir
 

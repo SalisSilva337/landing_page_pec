@@ -17,7 +17,7 @@ Uma classe CSS que aplica **uma** propriedade. `p-6` = padding de 1.5rem; `hidde
 
 ### CDN (Content Delivery Network)
 Servidor público que entrega arquivos prontos (bibliotecas, fontes). Em vez de baixar a biblioteca e colocar no projeto, a página pega de um endereço público.
-**Aqui:** Google Fonts, Font Awesome. O Tailwind já veio de CDN, mas hoje é compilado (ver "Build"). **Por quê:** zero instalação. **Custo:** precisa de internet para abrir a página.
+**Aqui:** Google Fonts. O Tailwind e o Font Awesome já vieram de CDN; hoje o Tailwind é compilado (ver "Build") e os ícones são SVG em `css/icones.css`. **Por quê:** zero instalação. **Custo:** precisa de internet para abrir a página.
 
 ### Play CDN do Tailwind
 A versão do Tailwind que roda **no navegador**: lê o HTML, vê quais classes você usou e gera o CSS na hora, a cada visita. É para desenvolvimento; em produção se compila um CSS fixo. Este projeto usou até trocar pelo Tailwind CLI.

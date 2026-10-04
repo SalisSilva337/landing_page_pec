@@ -16,6 +16,7 @@ css/
   base.css                scrollbar, foco por teclado, prefers-reduced-motion
   texturas.css            .leather-texture, .marble-texture, .stitch, .stitch-dark
   componentes.css         .bronze-gradient-*, .nav-link, .mobile-nav-link, .card-lift, .divider
+  icones.css              ícones SVG (.icone .icone-whatsapp...), desenhos do Font Awesome Free
   animacoes.css           @keyframes + .hero-in, .hero-pop, .spin-slow, .float-y, .snip, .crown-bob, .reveal
 js/
   menu-mobile.js          abre/fecha o menu no celular
@@ -35,8 +36,7 @@ imgs/
 | 8 | `<link rel="icon">` | Ícone da aba (favicon), usa o logo |
 | 9 | `classList.add('js')` | Marca que o JS está ativo. Sem isso, o CSS esconderia os `.reveal` para sempre. Fica embutido (não em arquivo) porque precisa rodar antes da página aparecer |
 | 11–13 | Google Fonts | Fontes Cinzel (títulos) e Montserrat (texto); `preconnect` acelera a conexão |
-| 14 | Font Awesome 6.4 | Ícones (`fa-scissors`, `fa-whatsapp` etc.) |
-| 16–19 | `css/*.css` | CSS próprio, nesta ordem: base, texturas, componentes, animações |
+| 15–19 | `css/*.css` | CSS próprio, nesta ordem: base, texturas, componentes, animações, ícones |
 | 20 | `css/tailwind.css` | Classes utilitárias do Tailwind. Vem **por último**, na mesma posição em que o antigo CDN injetava o CSS dele, para as regras se sobreporem igual |
 
 ## CSS próprio (`css/`)
@@ -52,6 +52,7 @@ imgs/
 | `componentes.css` | Cards | `.card-lift` sobe 6px no hover |
 | `componentes.css` | Divisor | `.divider` com linhas antes/depois do ícone de tesoura; `.left` tira a linha da esquerda |
 | `animacoes.css` | Animações | `@keyframes` `fadeUp`, `popIn`, `spinSlow`, `floatY`, `snip`, `glow`, `bob` e as classes que os usam (`.hero-in`, `.hero-pop`, `.spin-slow`, `.float-y`, `.snip`, `.crown-bob`) |
+| `icones.css` | Ícones | `.icone` + `.icone-<nome>`: SVG embutido usado como máscara na cor do texto. O tamanho segue o `font-size` (`text-lg`, `text-2xl`...). Como acrescentar um ícone: comentário no topo do arquivo |
 | `animacoes.css` | Revelar ao rolar | `.js .reveal` começa invisível; `.visible` dispara `fadeUp` com atraso `--d` |
 
 ## `<body>` (`index.html`, linhas 22–408)
@@ -117,4 +118,3 @@ Quatro arquivos independentes, carregados no fim do `<body>` (linhas 403–406).
 | O quê | De onde | Observação |
 |---|---|---|
 | Cinzel, Montserrat | Google Fonts | |
-| Font Awesome 6.4.0 | cdnjs | Só CSS; os ícones são classes `fa-*` |
