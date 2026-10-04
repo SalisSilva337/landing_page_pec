@@ -97,7 +97,7 @@ Quatro arquivos independentes, carregados no fim do `<body>` (linhas 395–398).
 
 - Observa todas as `section[id]` com um `IntersectionObserver`.
 - `rootMargin: '-20% 0px -60% 0px'` cria uma "faixa" no meio da tela (de 20% a 40% da altura, contada do topo).
-- Guarda num `Set` (`visiveis`) as seções que estão na faixa agora: entra na lista quando o aviso é `true` e sai quando é `false`. Depois escolhe a **última** da lista com `findLast`, isto é, a mais de baixo no HTML. Agir também no `false` evita o bug em que Diferenciais ficava sem destaque ao subir a partir do fim da página.
+- Guarda num `Set` (`visiveis`) as seções que estão na faixa agora: entra na lista quando o aviso é `true` e sai quando é `false`. Depois escolhe a **última** da lista (inverte com `reverse()` e pega a primeira com `find`), isto é, a mais de baixo no HTML. Agir também no `false` evita o bug em que Diferenciais ficava sem destaque ao subir a partir do fim da página.
 - `setActiveSection(id)` liga/desliga `.active-nav` nos links que têm `data-section` igual ao `id`.
 - O `scroll` extra trata dois casos que o observer erra: topo da página (força `inicio`) e fim da página (força `contato`, porque a última seção pode ser curta demais para cruzar a faixa).
 

@@ -91,7 +91,6 @@ O que não está pronto para produção, em ordem de impacto:
 | **Sem meta Open Graph** | O botão principal do site manda para o WhatsApp, mas o link do site, quando compartilhado no WhatsApp, aparece sem imagem nem descrição. |
 | **`imgs/image-removebg-preview.png`** | Não é referenciado em lugar nenhum. Candidato a remoção, confirmar com o time. |
 | **URL do WhatsApp repetida 7 vezes** | Trocar o número exige localizar e substituir em 7 lugares. |
-| **`findLast` no JS do menu** | Exige navegador de 2022 em diante (Chrome 97+, Safari 15.4+). Em navegador antigo, o destaque do menu quebra. |
 | **Copyright "2021–2026" fixo** | Precisa de edição manual todo ano. |
 | **Dependência total de CDN** | Sem internet, a página abre sem estilo, fontes e ícones. |
 

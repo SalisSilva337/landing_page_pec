@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) visiveis.add(entry.target);
             else visiveis.delete(entry.target);
         });
-        const atual = [...sections].findLast(s => visiveis.has(s));  // a mais de baixo
+        const atual = [...sections].reverse().find(s => visiveis.has(s));  // a mais de baixo (findLast seria mais curto, mas só existe em navegador de 2022+)
         if (atual) setActiveSection(atual.id);
     }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
 
