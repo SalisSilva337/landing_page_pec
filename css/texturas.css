@@ -1,0 +1,21 @@
+/* Textura sutil de couro */
+.leather-texture {
+    background-image:
+        radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        radial-gradient(rgba(0,0,0,0.25) 1px, transparent 1px);
+    background-size: 6px 6px, 9px 9px;
+    background-position: 0 0, 3px 3px;
+}
+
+/* Textura de mármore (veios suaves) */
+.marble-texture {
+    background-color: #EFEBE4;
+    background-image:
+        linear-gradient(115deg, transparent 40%, rgba(120,110,100,0.10) 41%, transparent 42.5%),
+        linear-gradient(62deg, transparent 55%, rgba(120,110,100,0.08) 56%, transparent 57.5%),
+        linear-gradient(160deg, transparent 20%, rgba(120,110,100,0.06) 21%, transparent 23%);
+}
+
+/* Costura do couro */
+.stitch { border: 2px dashed rgba(192,143,69,0.55); }
+.stitch-dark { border: 2px dashed rgba(43,27,18,0.35); }
