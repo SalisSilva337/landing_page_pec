@@ -392,77 +392,9 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <script>
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.toggle('hidden');
-            mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
-        });
-
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
-
-        // Destaque do menu conforme a seção visível
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('nav .nav-link, #mobileMenu .mobile-nav-link');
-
-            function setActiveSection(id) {
-                navLinks.forEach(link => {
-                    link.classList.toggle('active-nav', link.getAttribute('data-section') === id);
-                });
-            }
-
-            const visiveis = new Set();   // Set = lista sem repetição
-
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) visiveis.add(entry.target);
-                    else visiveis.delete(entry.target);
-                });
-                const atual = [...sections].findLast(s => visiveis.has(s));  // a mais de baixo
-                if (atual) setActiveSection(atual.id);
-            }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
-
-            sections.forEach(s => observer.observe(s));
-
-            window.addEventListener('scroll', () => {
-                if (window.scrollY < 100) {
-                    setActiveSection('inicio');
-                } else if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-                    setActiveSection('contato');
-                }
-            });
-        });
-
-        // Revelar elementos ao rolar + barra de progresso
-        document.addEventListener('DOMContentLoaded', () => {
-            const targets = document.querySelectorAll(
-                '#sobre .grid > div, #servicos .text-center, #servicos .grid > div, ' +
-                '#diferenciais .text-center, #diferenciais .grid > div, #contato .grid > div'
-            );
-            const revealObs = new IntersectionObserver((entries) => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
-                });
-            }, { threshold: 0.15 });
-
-            targets.forEach(el => {
-                const idx = Array.from(el.parentElement.children).indexOf(el);
-                el.style.setProperty('--d', (idx * 0.12) + 's');
-                el.classList.add('reveal');
-                revealObs.observe(el);
-            });
-
-            const bar = document.getElementById('scrollBar');
-            window.addEventListener('scroll', () => {
-                const h = document.documentElement.scrollHeight - window.innerHeight;
-                bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
-            }, { passive: true });
-        });
-    </script>
+    <script src="js/menu-mobile.js"></script>
+    <script src="js/nav-ativa.js"></script>
+    <script src="js/revelar-scroll.js"></script>
+    <script src="js/barra-progresso.js"></script>
 </body>
 </html>
