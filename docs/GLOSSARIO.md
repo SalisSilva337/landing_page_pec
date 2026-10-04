@@ -57,7 +57,7 @@ Atributos de acessibilidade. `aria-label="Abrir menu"` dá nome a um botão que 
 
 ### `prefers-reduced-motion`
 Media query que detecta se a pessoa pediu ao sistema operacional para reduzir animações (enjoo, epilepsia, preferência). O CSS então desliga as animações.
-**Aqui:** linhas 117–121 e 124. **Por quê:** acessibilidade; é boa prática em todo site com animação.
+**Aqui:** `css/base.css`. **Por quê:** acessibilidade; é boa prática em todo site com animação.
 
 ### `:focus-visible`
 Pseudo-classe que aplica estilo quando o elemento recebe foco **pelo teclado** (Tab), mas não pelo clique do mouse. Permite dar contorno para quem navega por teclado sem "sujar" o clique.
@@ -99,7 +99,7 @@ Evento disparado quando o HTML terminou de ser lido (antes de imagens carregarem
 
 ### `defer` (no `<script src>`)
 Diz ao navegador: baixe o script em paralelo, mas só execute depois que o HTML terminar de ser lido. Equivale a colocar o script no fim do `<body>`, mas pode ficar no `<head>`.
-**Aqui:** será usado quando o JS for separado em arquivos.
+**Aqui:** não usado. Os `<script src>` de `js/` ficam no fim do `<body>`, que tem o mesmo efeito. A exceção é `js/tailwind.config.js`, que fica no `<head>` e **não pode** ter `defer`: precisa rodar logo depois do CDN do Tailwind.
 
 ### `{ passive: true }` (em `addEventListener`)
 Promessa ao navegador de que o handler **não** vai chamar `preventDefault()`. Com isso o navegador não precisa esperar o handler terminar para rolar a página — scroll mais fluido.
