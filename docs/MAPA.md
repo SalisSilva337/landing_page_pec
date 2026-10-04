@@ -1,6 +1,6 @@
 # Mapa da landing page
 
-O que existe no projeto e onde está. O HTML fica em `index.html` (398 linhas); o CSS em `css/` e o JavaScript em `js/`. Quando mudar o código, atualize as linhas aqui.
+O que existe no projeto e onde está. O HTML fica em `index.html` (408 linhas); o CSS em `css/` e o JavaScript em `js/`. Quando mudar o código, atualize as linhas aqui.
 
 A página abre com dois cliques no `index.html`: são arquivos `.css` e `.js` comuns, ligados por `<link>` e `<script src>`. O único passo de build é gerar `css/tailwind.css` com o Tailwind CLI, e o resultado fica commitado (ver README, "Tailwind").
 
@@ -54,23 +54,23 @@ imgs/
 | `animacoes.css` | Animações | `@keyframes` `fadeUp`, `popIn`, `spinSlow`, `floatY`, `snip`, `glow`, `bob` e as classes que os usam (`.hero-in`, `.hero-pop`, `.spin-slow`, `.float-y`, `.snip`, `.crown-bob`) |
 | `animacoes.css` | Revelar ao rolar | `.js .reveal` começa invisível; `.visible` dispara `fadeUp` com atraso `--d` |
 
-## `<body>` (`index.html`, linhas 22–398)
+## `<body>` (`index.html`, linhas 22–408)
 
-A ordem visual da página:
+A ordem visual da página. Cada bloco começa com `<!-- ===== NOME ===== -->` e termina com `<!-- /NOME -->`:
 
 | Linhas | Bloco | `id` | Fundo | O que tem |
 |---|---|---|---|---|
-| 24 | Barra de progresso | `#scrollBar` | bronze | Linha de 3px no topo que cresce com a rolagem (controlada por JS) |
-| 26–46 | Barra superior | — | `leatherDeep` | Endereço (link para Maps), horário, telefone, ícones Instagram/WhatsApp |
-| 48–94 | Cabeçalho fixo | `<header>` | `leather/95` + blur | Logo + nome, menu desktop (5 links), botão WhatsApp, botão hambúrguer `#mobileMenuBtn`, menu mobile `#mobileMenu` (começa `hidden`) |
-| 96–143 | Hero | `#inicio` | couro | Selo "desde 2021", título com gradiente, parágrafo, 2 botões (ver serviços / WhatsApp), emblema circular girando e flutuando |
-| 145–191 | Sobre | `#sobre` | mármore | Card escuro com logo e 3 checks; título, 2 parágrafos, botão "Ver como chegar" |
-| 193–254 | Serviços | `#servicos` | `leatherDeep` | 4 cards: Corte R$ 28, **Corte e barba R$ 38** (destacado "Mais pedido"), Barba R$ 15, Corte com luzes R$ 70 |
-| 256–290 | Diferenciais | `#diferenciais` | areia | 3 cards: Ordem de chegada, Profissionais experientes, Preço justo |
-| 292–357 | Contato | `#contato` | couro | Endereço, telefone, horário, Instagram; card com botões WhatsApp e Maps |
-| 359–383 | Rodapé | `<footer>` | `leatherDeep` | Logo, copyright 2021–2026, ícones sociais |
-| 385–391 | WhatsApp flutuante | — | verde | Botão fixo no canto inferior direito com `animate-ping` |
-| 393–396 | `<script src>` | — | — | Os 4 arquivos de `js/` (detalhados abaixo) |
+| 24–25 | Barra de progresso | `#scrollBar` | bronze | Linha de 3px no topo que cresce com a rolagem (controlada por JS) |
+| 27–48 | Barra superior | — | `leatherDeep` | Endereço (link para Maps), horário, telefone, ícones Instagram/WhatsApp |
+| 50–97 | Cabeçalho fixo | `<header>` | `leather/95` + blur | Logo + nome, menu desktop (5 links), botão WhatsApp, botão hambúrguer `#mobileMenuBtn`, menu mobile `#mobileMenu` (começa `hidden`) |
+| 99–147 | Hero | `#inicio` | couro | Selo "desde 2021", título com gradiente, parágrafo, 2 botões (ver serviços / WhatsApp), emblema circular girando e flutuando |
+| 149–196 | Sobre | `#sobre` | mármore | Card escuro com logo e 3 checks; título, 2 parágrafos, botão "Ver como chegar" |
+| 198–260 | Serviços | `#servicos` | `leatherDeep` | 4 cards: Corte R$ 28, **Corte e barba R$ 38** (destacado "Mais pedido"), Barba R$ 15, Corte com luzes R$ 70 |
+| 262–297 | Diferenciais | `#diferenciais` | areia | 3 cards: Ordem de chegada, Profissionais experientes, Preço justo |
+| 299–365 | Contato | `#contato` | couro | Endereço, telefone, horário, Instagram; card com botões WhatsApp e Maps |
+| 367–392 | Rodapé | `<footer>` | `leatherDeep` | Logo, copyright 2021–2026, ícones sociais |
+| 394–401 | WhatsApp flutuante | — | verde | Botão fixo no canto inferior direito com `animate-ping` |
+| 403–406 | `<script src>` | — | — | Os 4 arquivos de `js/` (detalhados abaixo) |
 
 ### Padrões que se repetem no HTML
 
@@ -78,14 +78,14 @@ Vale conhecer porque aparecem muitas vezes (e porque, sem build, não dá para t
 
 - **Container**: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8` — centraliza e limita a largura. Aparece em toda seção.
 - **Título de seção**: `font-serif text-3xl sm:text-4xl font-bold` + `.divider` com tesoura logo abaixo.
-- **Card de serviço** (4x, linhas 205–250): `bg-leatherCard stitch rounded-xl p-6 ... card-lift group` → ícone em quadrado → `h3` → `p` → preço.
-- **Ícone em caixa** (contato, linhas 306–328): `w-10 h-10 rounded-lg bg-leatherDeep border border-bronze/40 ...`.
+- **Card de serviço** (4x, linhas 210–255): `bg-leatherCard stitch rounded-xl p-6 ... card-lift group` → ícone em quadrado → `h3` → `p` → preço.
+- **Ícone em caixa** (contato, linhas 313–335): `w-10 h-10 rounded-lg bg-leatherDeep border border-bronze/40 ...`.
 - **Link do WhatsApp**: a mesma URL `https://wa.me/5582987498857?text=...` aparece 7 vezes.
 - **Logo**: `imgs/logo.webp` aparece 6 vezes (favicon, header, hero, sobre, contato, rodapé).
 
 ## JavaScript (`js/`)
 
-Quatro arquivos independentes, carregados no fim do `<body>` (linhas 393–396). Nenhum depende do outro. São scripts comuns (não `type="module"`), por isso funcionam também abrindo o arquivo direto, sem servidor.
+Quatro arquivos independentes, carregados no fim do `<body>` (linhas 403–406). Nenhum depende do outro. São scripts comuns (não `type="module"`), por isso funcionam também abrindo o arquivo direto, sem servidor.
 
 ### `menu-mobile.js`
 

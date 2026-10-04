@@ -84,7 +84,7 @@ imgs/
 - [x] Extrair `tailwind.config` para `js/tailwind.config.js`
 - [x] Extrair o CSS para `css/` (4 arquivos)
 - [x] Extrair o JS para `js/` (4 arquivos)
-- [ ] Padronizar os comentários de seção no HTML
+- [x] Padronizar os comentários de seção no HTML (padrão no `AGENTS.md`)
 - [x] Atualizar `docs/MAPA.md` com os arquivos e linhas novos
 
 ### Deixar pronto para produção

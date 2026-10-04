@@ -1,3 +1,6 @@
+/* Animações: keyframes, classes que os usam e o revelar ao rolar */
+
+/* --- Keyframes --- */
 @keyframes fadeUp { from { opacity:0; translate:0 28px; } to { opacity:1; translate:0 0; } }
 @keyframes popIn { from { opacity:0; scale:.85; } to { opacity:1; scale:1; } }
 @keyframes spinSlow { to { rotate:360deg; } }
@@ -6,6 +9,7 @@
 @keyframes glow { 0%,100% { box-shadow:0 0 25px rgba(192,143,69,.15); } 50% { box-shadow:0 0 55px rgba(221,181,114,.35); } }
 @keyframes bob { 0%,100% { translate:0 0; } 50% { translate:0 -4px; } }
 
+/* --- Classes de animação --- */
 .hero-in { opacity:0; animation: fadeUp .8s cubic-bezier(.2,.7,.2,1) forwards; }
 .hero-pop { opacity:0; animation: popIn 1s cubic-bezier(.2,.7,.2,1) .2s forwards; }
 .spin-slow { animation: spinSlow 40s linear infinite; }
@@ -13,6 +17,7 @@
 .snip { display:inline-block; transform-origin:50% 50%; animation: snip 3.5s ease-in-out infinite; }
 .crown-bob { display:inline-block; animation: bob 2.5s ease-in-out infinite; }
 
-/* Revelar ao rolar: o JS adiciona .reveal e, quando o bloco aparece, .visible */
+/* --- Revelar ao rolar --- */
+/* O JS adiciona .reveal e, quando o bloco aparece, .visible */
 .js .reveal { opacity:0; }
 .js .reveal.visible { animation: fadeUp .8s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: var(--d, 0s); }

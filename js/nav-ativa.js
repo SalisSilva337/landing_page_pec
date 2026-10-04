@@ -1,4 +1,4 @@
-// Destaque do menu conforme a seção visível
+// Destaque do menu conforme a seção visível (section[id], .nav-link, .mobile-nav-link)
 document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('nav .nav-link, #mobileMenu .mobile-nav-link');

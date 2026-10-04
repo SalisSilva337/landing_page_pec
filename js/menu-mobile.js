@@ -1,4 +1,4 @@
-// Abre/fecha o menu no celular
+// Abre/fecha o menu no celular (#mobileMenuBtn, #mobileMenu)
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 

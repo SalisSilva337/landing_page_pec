@@ -1,4 +1,4 @@
-// Revelar elementos ao rolar
+// Revelar elementos ao rolar (adiciona .reveal e .visible; a animação está em css/animacoes.css)
 document.addEventListener('DOMContentLoaded', () => {
     const targets = document.querySelectorAll(
         '#sobre .grid > div, #servicos .text-center, #servicos .grid > div, ' +

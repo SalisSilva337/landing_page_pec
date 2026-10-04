@@ -70,6 +70,11 @@ Critérios fortes permitem iterar sozinho. Critérios fracos ("faz funcionar") e
 - Onde está cada coisa: `docs/MAPA.md`. Termos explicados: `docs/GLOSSARIO.md`. Números de linha nos docs podem estar defasados; confira no arquivo.
 - To-do e dívidas técnicas: `README.md`. Ao concluir um item, marque lá.
 - Idioma: português do Brasil nas respostas, commits e comentários. Código e termos técnicos em inglês.
+- Comentários (padrão do projeto):
+  - HTML: cada bloco abre com `<!-- ===== NOME (#id) ===== -->` e, se tiver várias linhas, fecha com `<!-- /NOME -->`.
+  - CSS: uma linha de cabeçalho por arquivo dizendo o que ele contém; grupos separados por `/* --- Grupo --- */`.
+  - JS: uma linha no topo dizendo o que o arquivo faz e os elementos que ele usa (`#id`, `.classe`).
+  - O comentário explica o **porquê**, não o quê. Nunca cite número de linha no código (fica errado na primeira edição); isso é só no `docs/MAPA.md`.
 - Commits: uma mudança por commit, mensagem em português no imperativo (`Extrai CSS de texturas para css/texturas.css`). Commite só quando o usuário pedir, depois que ele revisar o diff.
 
 **Estas orientações estão funcionando se:** os diffs têm menos mudanças desnecessárias, há menos reescritas por complicação excessiva, e as perguntas vêm antes da implementação, não depois dos erros.

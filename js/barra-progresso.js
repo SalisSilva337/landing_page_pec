@@ -1,4 +1,4 @@
-// Barra de progresso de 3px no topo
+// Barra de progresso de 3px no topo (#scrollBar)
 document.addEventListener('DOMContentLoaded', () => {
     const bar = document.getElementById('scrollBar');
     window.addEventListener('scroll', () => {
