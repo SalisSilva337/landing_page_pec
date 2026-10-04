@@ -57,7 +57,7 @@ js/
   revelar-scroll.js    animação de entrada dos blocos ao rolar
   barra-progresso.js   barra de 3px no topo
 imgs/
-  logo.png
+  logo.webp
 ```
 
 - [x] Renomear `barbearia_wm_landing_page.html` → `index.html`
@@ -72,7 +72,7 @@ imgs/
 
 - [ ] Trocar o Tailwind Play CDN por CSS compilado (exige build; decisão do time)
 - [ ] Adicionar meta tags Open Graph para o link ter preview no WhatsApp e redes
-- [ ] Comprimir e redimensionar o logo (hoje 1,5 MB)
+- [x] Comprimir e redimensionar o logo (1,5 MB → 111 KB, WebP 640×640)
 - [ ] Publicar no GitHub Pages (depende de `index.html`)
 
 ### Funcionalidades novas (ideias, sem compromisso)
@@ -89,7 +89,6 @@ O que não está pronto para produção, em ordem de impacto:
 |---|---|
 | **Tailwind Play CDN** | Gera o CSS no navegador a cada carregamento. É versão de desenvolvimento: pesada, lenta no primeiro paint e avisa no console que não deve ir para produção. |
 | **Sem meta Open Graph** | O botão principal do site manda para o WhatsApp, mas o link do site, quando compartilhado no WhatsApp, aparece sem imagem nem descrição. |
-| **Logo `imgs/logo.png` com 1,5 MB** | Pesado demais para um logo; atrasa o carregamento, principalmente no celular. Referenciado 6 vezes. |
 | **`imgs/image-removebg-preview.png`** | Não é referenciado em lugar nenhum. Candidato a remoção, confirmar com o time. |
 | **URL do WhatsApp repetida 7 vezes** | Trocar o número exige localizar e substituir em 7 lugares. |
 | **`findLast` no JS do menu** | Exige navegador de 2022 em diante (Chrome 97+, Safari 15.4+). Em navegador antigo, o destaque do menu quebra. |

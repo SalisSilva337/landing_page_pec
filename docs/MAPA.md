@@ -21,7 +21,7 @@ js/
   revelar-scroll.js       animação de entrada dos blocos ao rolar
   barra-progresso.js      barra de 3px no topo
 imgs/
-  logo.png                logo (favicon, header, hero, sobre, contato, rodapé)
+  logo.webp               logo, 640×640 (favicon, header, hero, sobre, contato, rodapé)
 ```
 
 ## `<head>` (`index.html`, linhas 1–23)
@@ -80,7 +80,7 @@ Vale conhecer porque aparecem muitas vezes (e porque, sem build, não dá para t
 - **Card de serviço** (4x, linhas 207–252): `bg-leatherCard stitch rounded-xl p-6 ... card-lift group` → ícone em quadrado → `h3` → `p` → preço.
 - **Ícone em caixa** (contato, linhas 308–330): `w-10 h-10 rounded-lg bg-leatherDeep border border-bronze/40 ...`.
 - **Link do WhatsApp**: a mesma URL `https://wa.me/5582987498857?text=...` aparece 7 vezes.
-- **Logo**: `imgs/logo.png` aparece 6 vezes (favicon, header, hero, sobre, contato, rodapé).
+- **Logo**: `imgs/logo.webp` aparece 6 vezes (favicon, header, hero, sobre, contato, rodapé).
 
 ## JavaScript (`js/`)
 
