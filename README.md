@@ -107,7 +107,6 @@ O que não está pronto para produção, em ordem de impacto:
 | Item | Por que importa |
 |---|---|
 | **Sem meta Open Graph** | O botão principal do site manda para o WhatsApp, mas o link do site, quando compartilhado no WhatsApp, aparece sem imagem nem descrição. |
-| **`imgs/image-removebg-preview.png`** | Não é referenciado em lugar nenhum. Candidato a remoção, confirmar com o time. |
 | **URL do WhatsApp repetida 7 vezes** | Trocar o número exige localizar e substituir em 7 lugares. |
 | **Copyright "2021–2026" fixo** | Precisa de edição manual todo ano. |
 | **Fontes e ícones via CDN** | Sem internet, a página abre sem as fontes e sem os ícones (o layout e as cores ficam, porque o CSS é local). |
