@@ -1,0 +1,20 @@
+/* Regras gerais: scrollbar, foco por teclado e movimento reduzido */
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1F130C; }
+::-webkit-scrollbar-thumb { background: #A86A32; border-radius: 4px; }
+
+/* --- Foco por teclado --- */
+a:focus-visible, button:focus-visible { outline: 2px solid #DDB572; outline-offset: 3px; }
+
+/* --- Movimento reduzido --- */
+/* Quem pediu menos movimento no sistema: sem animações, transições nem rolagem suave.
+   Tudo com !important porque este arquivo carrega antes de componentes.css e animacoes.css. */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    * { transition: none !important; }
+    .hero-in, .hero-pop, .js .reveal { opacity:1 !important; animation:none !important; }
+    .spin-slow, .float-y, .snip, .crown-bob { animation:none !important; }
+    .card-lift:hover { transform:none !important; }
+}

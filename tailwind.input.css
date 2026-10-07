@@ -1,0 +1,4 @@
+/* Entrada do Tailwind CLI. Não é carregado pela página: o CLI lê este arquivo e gera css/tailwind.css. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -5,158 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barbearia WM - Desde 2021 | Estilo & Tradição</title>
     <meta name="description" content="Barbearia WM em Santa Lúcia, Maceió. Corte, barba e luzes por ordem de chegada. Desde 2021.">
-    <link rel="icon" type="image/png" href="imgs/image-removebg-preview (1).png">
+    <link rel="icon" type="image/webp" href="imgs/logo.webp">
     <script>document.documentElement.classList.add('js');</script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        leather:      '#2B1B12', // couro escuro (fundo principal)
-                        leatherDeep:  '#1F130C', // couro quase preto
-                        leatherCard:  '#3A2618', // couro envelhecido (cards)
-                        caramel:      '#A86A32', // caramelo escuro
-                        terracotta:   '#9C4F32', // terracota sóbria
-                        bronze:       '#C08F45', // bronze / dourado queimado
-                        bronzeLight:  '#DDB572',
-                        sand:         '#DCC9A6', // areia
-                        marble:       '#EFEBE4'  // mármore
-                    },
-                    fontFamily: {
-                        serif: ['Cinzel', 'serif'],
-                        sans: ['Montserrat', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1F130C; }
-        ::-webkit-scrollbar-thumb { background: #A86A32; border-radius: 4px; }
-
-        /* Textura sutil de couro */
-        .leather-texture {
-            background-image:
-                radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-                radial-gradient(rgba(0,0,0,0.25) 1px, transparent 1px);
-            background-size: 6px 6px, 9px 9px;
-            background-position: 0 0, 3px 3px;
-        }
-
-        /* Textura de mármore (veios suaves) */
-        .marble-texture {
-            background-color: #EFEBE4;
-            background-image:
-                linear-gradient(115deg, transparent 40%, rgba(120,110,100,0.10) 41%, transparent 42.5%),
-                linear-gradient(62deg, transparent 55%, rgba(120,110,100,0.08) 56%, transparent 57.5%),
-                linear-gradient(160deg, transparent 20%, rgba(120,110,100,0.06) 21%, transparent 23%);
-        }
-
-        /* Costura do couro */
-        .stitch { border: 2px dashed rgba(192,143,69,0.55); }
-        .stitch-dark { border: 2px dashed rgba(43,27,18,0.35); }
-
-        .bronze-gradient-text {
-            background: linear-gradient(135deg, #F2DDB0 0%, #C08F45 55%, #8F6428 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .bronze-gradient-bg { background: linear-gradient(135deg, #C08F45 0%, #8F6428 100%); }
-        .bronze-gradient-bg:hover { background: linear-gradient(135deg, #D0A05A 0%, #A2742F 100%); }
-
-        .nav-link { position: relative; transition: color .3s ease; }
-        .nav-link::after {
-            content: ''; position: absolute; bottom: -6px; left: 0;
-            width: 0; height: 2px; background: #C08F45; transition: width .3s ease;
-        }
-        .nav-link.active-nav { color: #DDB572 !important; font-weight: 700; }
-        .nav-link.active-nav::after { width: 100%; }
-
-        .mobile-nav-link.active-nav {
-            color: #DDB572 !important; font-weight: 700;
-            background: rgba(192,143,69,0.12); border-left: 4px solid #C08F45; padding-left: 12px;
-        }
-
-
-        /* ===== Animações ===== */
-        @keyframes fadeUp { from { opacity:0; translate:0 28px; } to { opacity:1; translate:0 0; } }
-        @keyframes popIn { from { opacity:0; scale:.85; } to { opacity:1; scale:1; } }
-        @keyframes spinSlow { to { rotate:360deg; } }
-        @keyframes floatY { 0%,100% { translate:0 0; } 50% { translate:0 -10px; } }
-        @keyframes snip { 0%,70%,100% { rotate:0deg; } 80% { rotate:-18deg; } 90% { rotate:14deg; } }
-        @keyframes glow { 0%,100% { box-shadow:0 0 25px rgba(192,143,69,.15); } 50% { box-shadow:0 0 55px rgba(221,181,114,.35); } }
-        @keyframes bob { 0%,100% { translate:0 0; } 50% { translate:0 -4px; } }
-
-        .hero-in { opacity:0; animation: fadeUp .8s cubic-bezier(.2,.7,.2,1) forwards; }
-        .hero-pop { opacity:0; animation: popIn 1s cubic-bezier(.2,.7,.2,1) .2s forwards; }
-        .spin-slow { animation: spinSlow 40s linear infinite; }
-        .float-y { animation: floatY 6s ease-in-out infinite, glow 5s ease-in-out infinite; }
-        .snip { display:inline-block; transform-origin:50% 50%; animation: snip 3.5s ease-in-out infinite; }
-        .crown-bob { display:inline-block; animation: bob 2.5s ease-in-out infinite; }
-
-        .js .reveal { opacity:0; }
-        .js .reveal.visible { animation: fadeUp .8s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: var(--d, 0s); }
-
-        .card-lift { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
-        .card-lift:hover { transform: translateY(-6px); box-shadow: 0 18px 30px rgba(0,0,0,.28); }
-
-        .divider { display:flex; align-items:center; gap:.75rem; }
-        .divider::before, .divider::after { content:''; height:1px; width:3rem; background: currentColor; opacity:.5; }
-        .divider.left::before { display:none; }
-
-        @media (prefers-reduced-motion: reduce) {
-            .hero-in, .hero-pop, .js .reveal { opacity:1 !important; animation:none !important; }
-            .spin-slow, .float-y, .snip, .crown-bob { animation:none !important; }
-            .card-lift:hover { transform:none; }
-        }
-
-        a:focus-visible, button:focus-visible { outline: 2px solid #DDB572; outline-offset: 3px; }
-        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto !important; } * { transition: none !important; } }
-    </style>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/texturas.css">
+    <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/animacoes.css">
+    <link rel="stylesheet" href="css/icones.css">
+    <link rel="stylesheet" href="css/tailwind.css">
 </head>
 <body class="bg-leather text-sand font-sans antialiased overflow-x-hidden">
 
+    <!-- ===== BARRA DE PROGRESSO (#scrollBar) ===== -->
     <div id="scrollBar" class="fixed top-0 left-0 h-[3px] w-0 bg-bronze z-[60]"></div>
 
-    <!-- Barra superior -->
+    <!-- ===== BARRA SUPERIOR ===== -->
     <div class="bg-leatherDeep border-b border-bronze/25 py-2 text-xs md:text-sm text-sand/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-2">
             <div class="flex items-center gap-6">
                 <a class="hover:text-bronzeLight transition-colors" href="https://maps.app.goo.gl/kN9mAYPs7R5gHRbcA" target="_blank" rel="noopener">
-                    <i class="fa-solid fa-location-dot text-bronze mr-2"></i>R. Dilermando Réis, 921 - Santa Lúcia
+                    <i class="icone icone-location-dot text-bronze mr-2"></i>R. Dilermando Réis, 921 - Santa Lúcia
                 </a>
-                <span class="hidden sm:inline"><i class="fa-solid fa-clock text-bronze mr-2"></i>Ter - Sáb: 08h às 20h | Dom: 08h às 12h</span>
+                <span class="hidden sm:inline"><i class="icone icone-clock text-bronze mr-2"></i>Ter - Sáb: 08h às 20h | Dom: 08h às 12h</span>
             </div>
             <div class="flex items-center gap-4">
                 <a href="tel:82987498857" class="hover:text-bronzeLight transition-colors">
-                    <i class="fa-solid fa-phone text-bronze mr-1"></i> (82) 98749-8857
+                    <i class="icone icone-phone text-bronze mr-1"></i> (82) 98749-8857
                 </a>
                 <span class="text-bronze/40">|</span>
                 <div class="flex gap-3 text-bronze">
-                    <a href="https://www.instagram.com/barbearia_wm21/" target="_blank" rel="noopener" class="hover:text-marble transition-colors" title="Instagram @barbearia_wm21" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://wa.me/5582987498857?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Barbearia%20WM." target="_blank" rel="noopener" class="hover:text-marble transition-colors" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/barbearia_wm21/" target="_blank" rel="noopener" class="hover:text-marble transition-colors" title="Instagram @barbearia_wm21" aria-label="Instagram"><i class="icone icone-instagram"></i></a>
+                    <a href="https://wa.me/5582987498857?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Barbearia%20WM." target="_blank" rel="noopener" class="hover:text-marble transition-colors" title="WhatsApp" aria-label="WhatsApp"><i class="icone icone-whatsapp"></i></a>
                 </div>
             </div>
         </div>
     </div>
+    <!-- /BARRA SUPERIOR -->
 
-    <!-- Cabeçalho -->
+    <!-- ===== CABEÇALHO ===== -->
     <header class="sticky top-0 z-40 bg-leather/95 backdrop-blur-md border-b border-bronze/25 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <a href="#inicio" class="flex items-center gap-3 group">
                     <div class="w-12 h-12 rounded-full border border-bronze/50 bg-leatherDeep p-1 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                        <img src="imgs/image-removebg-preview (1).png" alt="Logo Barbearia WM" class="w-full h-full object-contain">
+                        <img src="imgs/logo.webp" alt="Logo Barbearia WM" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <span class="font-serif text-xl sm:text-2xl font-bold tracking-widest text-bronzeLight block leading-tight">BARBEARIA WM</span>
@@ -165,40 +62,41 @@
                 </a>
 
                 <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                    <a href="#inicio" data-section="inicio" class="nav-link active-nav text-sand/80 hover:text-bronzeLight"><i class="fa-solid fa-house text-[11px] mr-1.5 opacity-80"></i>Início</a>
-                    <a href="#sobre" data-section="sobre" class="nav-link text-sand/80 hover:text-bronzeLight"><i class="fa-solid fa-circle-info text-[11px] mr-1.5 opacity-80"></i>Sobre Nós</a>
-                    <a href="#servicos" data-section="servicos" class="nav-link text-sand/80 hover:text-bronzeLight"><i class="fa-solid fa-scissors text-[11px] mr-1.5 opacity-80"></i>Serviços</a>
-                    <a href="#diferenciais" data-section="diferenciais" class="nav-link text-sand/80 hover:text-bronzeLight"><i class="fa-solid fa-medal text-[11px] mr-1.5 opacity-80"></i>Diferenciais</a>
-                    <a href="#contato" data-section="contato" class="nav-link text-sand/80 hover:text-bronzeLight"><i class="fa-solid fa-phone text-[11px] mr-1.5 opacity-80"></i>Contato</a>
+                    <a href="#inicio" data-section="inicio" class="nav-link active-nav text-sand/80 hover:text-bronzeLight"><i class="icone icone-house text-[11px] mr-1.5 opacity-80"></i>Início</a>
+                    <a href="#sobre" data-section="sobre" class="nav-link text-sand/80 hover:text-bronzeLight"><i class="icone icone-circle-info text-[11px] mr-1.5 opacity-80"></i>Sobre Nós</a>
+                    <a href="#servicos" data-section="servicos" class="nav-link text-sand/80 hover:text-bronzeLight"><i class="icone icone-scissors text-[11px] mr-1.5 opacity-80"></i>Serviços</a>
+                    <a href="#diferenciais" data-section="diferenciais" class="nav-link text-sand/80 hover:text-bronzeLight"><i class="icone icone-medal text-[11px] mr-1.5 opacity-80"></i>Diferenciais</a>
+                    <a href="#contato" data-section="contato" class="nav-link text-sand/80 hover:text-bronzeLight"><i class="icone icone-phone text-[11px] mr-1.5 opacity-80"></i>Contato</a>
                 </nav>
 
                 <div class="hidden lg:flex items-center">
                     <a href="https://wa.me/5582987498857?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Barbearia%20WM." target="_blank" rel="noopener"
                        class="bronze-gradient-bg text-leatherDeep font-bold py-2.5 px-5 rounded-md hover:shadow-lg hover:shadow-bronze/20 transition-all text-sm tracking-wide flex items-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> Tirar dúvidas
+                        <i class="icone icone-whatsapp text-lg"></i> Tirar dúvidas
                     </a>
                 </div>
 
                 <button id="mobileMenuBtn" class="md:hidden text-bronzeLight p-2" aria-label="Abrir menu" aria-expanded="false">
-                    <i class="fa-solid fa-bars text-2xl"></i>
+                    <i class="icone icone-bars text-2xl"></i>
                 </button>
             </div>
         </div>
 
         <div id="mobileMenu" class="hidden md:hidden bg-leatherDeep border-b border-bronze/25 px-4 pt-2 pb-6 space-y-3">
-            <a href="#inicio" data-section="inicio" class="mobile-nav-link active-nav block py-2 text-sand/80 font-medium border-b border-bronze/10"><i class="fa-solid fa-house text-[11px] mr-1.5 opacity-80"></i>Início</a>
-            <a href="#sobre" data-section="sobre" class="mobile-nav-link block py-2 text-sand/80 font-medium border-b border-bronze/10"><i class="fa-solid fa-circle-info text-[11px] mr-1.5 opacity-80"></i>Sobre Nós</a>
-            <a href="#servicos" data-section="servicos" class="mobile-nav-link block py-2 text-sand/80 font-medium border-b border-bronze/10"><i class="fa-solid fa-scissors text-[11px] mr-1.5 opacity-80"></i>Serviços</a>
-            <a href="#diferenciais" data-section="diferenciais" class="mobile-nav-link block py-2 text-sand/80 font-medium border-b border-bronze/10"><i class="fa-solid fa-medal text-[11px] mr-1.5 opacity-80"></i>Diferenciais</a>
-            <a href="#contato" data-section="contato" class="mobile-nav-link block py-2 text-sand/80 font-medium border-b border-bronze/10"><i class="fa-solid fa-phone text-[11px] mr-1.5 opacity-80"></i>Contato</a>
+            <a href="#inicio" data-section="inicio" class="mobile-nav-link active-nav block py-2 text-sand/80 font-medium border-b border-bronze/10"><i class="icone icone-house text-[11px] mr-1.5 opacity-80"></i>Início</a>
+            <a href="#sobre" data-section="sobre" class="mobile-nav-link block py-2 text-sand/80 font-medium border-b border-bronze/10"><i class="icone icone-circle-info text-[11px] mr-1.5 opacity-80"></i>Sobre Nós</a>
+            <a href="#servicos" data-section="servicos" class="mobile-nav-link block py-2 text-sand/80 font-medium border-b border-bronze/10"><i class="icone icone-scissors text-[11px] mr-1.5 opacity-80"></i>Serviços</a>
+            <a href="#diferenciais" data-section="diferenciais" class="mobile-nav-link block py-2 text-sand/80 font-medium border-b border-bronze/10"><i class="icone icone-medal text-[11px] mr-1.5 opacity-80"></i>Diferenciais</a>
+            <a href="#contato" data-section="contato" class="mobile-nav-link block py-2 text-sand/80 font-medium border-b border-bronze/10"><i class="icone icone-phone text-[11px] mr-1.5 opacity-80"></i>Contato</a>
             <a href="https://wa.me/5582987498857?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Barbearia%20WM." target="_blank" rel="noopener"
                class="w-full mt-3 bronze-gradient-bg text-leatherDeep font-bold py-3 px-4 rounded-md text-sm flex items-center justify-center gap-2">
-                <i class="fa-brands fa-whatsapp text-lg"></i> Tirar dúvidas no WhatsApp
+                <i class="icone icone-whatsapp text-lg"></i> Tirar dúvidas no WhatsApp
             </a>
         </div>
     </header>
+    <!-- /CABEÇALHO -->
 
-    <!-- Hero -->
+    <!-- ===== HERO (#inicio) ===== -->
     <section id="inicio" class="relative min-h-[88vh] flex items-center justify-center bg-leather leather-texture py-20 overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(192,143,69,0.10)_0%,transparent_70%)] pointer-events-none"></div>
 
@@ -207,7 +105,7 @@
 
                 <div class="lg:col-span-7 text-center lg:text-left space-y-6">
                     <div class="hero-in inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full stitch bg-leatherDeep/70 text-bronzeLight text-xs sm:text-sm font-medium" style="animation-delay:.1s">
-                        <i class="fa-solid fa-scissors text-xs snip"></i>
+                        <i class="icone icone-scissors text-xs snip"></i>
                         <span>Barbearia clássica desde 2021</span>
                     </div>
 
@@ -222,32 +120,33 @@
 
                     <div class="hero-in flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4" style="animation-delay:.55s">
                         <a href="#servicos" class="w-full sm:w-auto bronze-gradient-bg text-leatherDeep font-bold py-4 px-8 rounded-lg shadow-xl transition-all text-center text-sm tracking-wide">
-                            <i class="fa-solid fa-arrow-down mr-2 animate-bounce"></i>Ver serviços e preços
+                            <i class="icone icone-arrow-down mr-2 animate-bounce"></i>Ver serviços e preços
                         </a>
                         <a href="https://wa.me/5582987498857?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Barbearia%20WM." target="_blank" rel="noopener"
                            class="w-full sm:w-auto border border-bronze/60 hover:border-bronzeLight text-bronzeLight hover:bg-bronze/10 font-semibold py-4 px-8 rounded-lg transition-all text-center text-sm tracking-wide flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-lg"></i> Tirar dúvidas
+                            <i class="icone icone-whatsapp text-lg"></i> Tirar dúvidas
                         </a>
                     </div>
 
                     <div class="hero-in pt-6 border-t border-bronze/20 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs sm:text-sm text-sand/70" style="animation-delay:.7s">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-person-walking text-bronze"></i> Ordem de chegada</span>
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-clock text-bronze"></i> Ter a Sáb: 08h às 20h</span>
+                        <span class="flex items-center gap-2"><i class="icone icone-person-walking text-bronze"></i> Ordem de chegada</span>
+                        <span class="flex items-center gap-2"><i class="icone icone-clock text-bronze"></i> Ter a Sáb: 08h às 20h</span>
                     </div>
                 </div>
 
                 <div class="hero-pop lg:col-span-5 flex justify-center">
                     <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full border-4 border-bronze/50 p-4 bg-leatherDeep/90 flex items-center justify-center group float-y">
                         <div class="absolute inset-3 rounded-full stitch spin-slow"></div>
-                        <img src="imgs/image-removebg-preview (1).png" alt="Emblema Barbearia WM" class="absolute inset-[5%] w-[90%] h-[90%] object-contain drop-shadow-[0_0_15px_rgba(192,143,69,0.35)] transition-transform duration-500 group-hover:scale-105">
+                        <img src="imgs/logo.webp" alt="Emblema Barbearia WM" class="absolute inset-[5%] w-[90%] h-[90%] object-contain drop-shadow-[0_0_15px_rgba(192,143,69,0.35)] transition-transform duration-500 group-hover:scale-105">
                     </div>
                 </div>
 
             </div>
         </div>
     </section>
+    <!-- /HERO -->
 
-    <!-- Sobre (mármore) -->
+    <!-- ===== SOBRE (#sobre) ===== -->
     <section id="sobre" class="py-20 marble-texture text-leather">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -256,7 +155,7 @@
                     <div class="bg-leather leather-texture stitch p-8 rounded-2xl shadow-xl relative z-10">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-16 h-16 rounded-full bg-leatherDeep border border-bronze/50 p-1 flex items-center justify-center shrink-0">
-                                <img src="imgs/image-removebg-preview (1).png" alt="Barbearia WM" class="w-full h-full object-contain">
+                                <img src="imgs/logo.webp" alt="Barbearia WM" class="w-full h-full object-contain">
                             </div>
                             <div>
                                 <h3 class="font-serif text-xl font-bold text-marble">Barbearia WM</h3>
@@ -267,9 +166,9 @@
                             Fundada em 2021, a Barbearia WM nasceu para oferecer um serviço bem feito, num ambiente masculino e acolhedor, sem complicação e sem espera marcada.
                         </p>
                         <div class="space-y-3 text-sm text-sand/90">
-                            <div class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-bronze"></i><span>Profissionais experientes e em constante atualização</span></div>
-                            <div class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-bronze"></i><span>Atendimento por ordem de chegada</span></div>
-                            <div class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-bronze"></i><span>Preços justos e sempre à vista na tabela</span></div>
+                            <div class="flex items-center gap-3"><i class="icone icone-circle-check text-bronze"></i><span>Profissionais experientes e em constante atualização</span></div>
+                            <div class="flex items-center gap-3"><i class="icone icone-circle-check text-bronze"></i><span>Atendimento por ordem de chegada</span></div>
+                            <div class="flex items-center gap-3"><i class="icone icone-circle-check text-bronze"></i><span>Preços justos e sempre à vista na tabela</span></div>
                         </div>
                     </div>
                     <div class="absolute -bottom-4 -right-4 w-full h-full border-2 border-caramel/40 rounded-2xl hidden sm:block"></div>
@@ -279,7 +178,7 @@
                     <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight text-leather">
                         Respeito ao seu tempo e dedicação ao seu estilo.
                     </h2>
-                    <div class="divider left text-caramel"><i class="fa-solid fa-scissors"></i></div>
+                    <div class="divider left text-caramel"><i class="icone icone-scissors"></i></div>
                     <p class="text-leather/80 text-sm sm:text-base leading-relaxed">
                         Na Barbearia WM, acreditamos que o visual em dia faz diferença na confiança de qualquer homem. Por isso, desde 2021 cuidamos de cada corte e de cada barba com atenção aos detalhes.
                     </p>
@@ -287,21 +186,22 @@
                         Chegou, sentou, saiu alinhado. Aqui o atendimento segue a ordem de chegada, e você conta com um trabalho minucioso e uma boa conversa.
                     </p>
                     <a href="#contato" class="bg-leather text-bronzeLight hover:bg-leatherCard font-bold py-3 px-6 rounded-lg text-sm inline-flex items-center gap-2 transition-colors">
-                        <i class="fa-solid fa-location-dot"></i> Ver como chegar
+                        <i class="icone icone-location-dot"></i> Ver como chegar
                     </a>
                 </div>
 
             </div>
         </div>
     </section>
+    <!-- /SOBRE -->
 
-    <!-- Serviços -->
+    <!-- ===== SERVIÇOS (#servicos) ===== -->
     <section id="servicos" class="py-20 bg-leatherDeep leather-texture">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <h2 class="font-serif text-3xl sm:text-4xl font-bold text-marble">Nossos Serviços</h2>
-                <div class="divider justify-center mt-4 text-bronze"><i class="fa-solid fa-scissors"></i></div>
+                <div class="divider justify-center mt-4 text-bronze"><i class="icone icone-scissors"></i></div>
                 <p class="text-sand/70 text-sm mt-4">Atendimento por ordem de chegada. Não precisa marcar horário.</p>
             </div>
 
@@ -310,7 +210,7 @@
                 <div class="bg-leatherCard stitch rounded-xl p-6 flex flex-col justify-between card-lift group">
                     <div>
                         <div class="w-12 h-12 rounded-lg bg-leatherDeep border border-bronze/40 flex items-center justify-center text-bronze text-xl mb-4 group-hover:bg-bronze group-hover:text-leatherDeep transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
-                            <i class="fa-solid fa-scissors"></i>
+                            <i class="icone icone-scissors"></i>
                         </div>
                         <h3 class="font-serif text-xl font-bold text-marble mb-2">Corte</h3>
                         <p class="text-sand/70 text-xs leading-relaxed mb-4">Corte feito com atenção ao formato do rosto e ao seu estilo.</p>
@@ -324,7 +224,7 @@
                     </div>
                     <div>
                         <div class="w-12 h-12 rounded-lg bg-bronze text-leatherDeep flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-crown crown-bob"></i>
+                            <i class="icone icone-crown crown-bob"></i>
                         </div>
                         <h3 class="font-serif text-xl font-bold text-marble mb-2">Corte e barba</h3>
                         <p class="text-sand/70 text-xs leading-relaxed mb-4">O combo completo: cabelo e barba alinhados numa única visita.</p>
@@ -335,7 +235,7 @@
                 <div class="bg-leatherCard stitch rounded-xl p-6 flex flex-col justify-between card-lift group">
                     <div>
                         <div class="w-12 h-12 rounded-lg bg-leatherDeep border border-bronze/40 flex items-center justify-center text-bronze text-xl mb-4 group-hover:bg-bronze group-hover:text-leatherDeep transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
-                            <i class="fa-solid fa-user-tie"></i>
+                            <i class="icone icone-user-tie"></i>
                         </div>
                         <h3 class="font-serif text-xl font-bold text-marble mb-2">Barba</h3>
                         <p class="text-sand/70 text-xs leading-relaxed mb-4">Barba desenhada e aparada, com acabamento limpo.</p>
@@ -346,7 +246,7 @@
                 <div class="bg-leatherCard stitch rounded-xl p-6 flex flex-col justify-between card-lift group">
                     <div>
                         <div class="w-12 h-12 rounded-lg bg-leatherDeep border border-bronze/40 flex items-center justify-center text-bronze text-xl mb-4 group-hover:bg-bronze group-hover:text-leatherDeep transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <i class="icone icone-wand-magic-sparkles"></i>
                         </div>
                         <h3 class="font-serif text-xl font-bold text-marble mb-2">Corte com luzes</h3>
                         <p class="text-sand/70 text-xs leading-relaxed mb-4">Corte completo com luzes para dar destaque ao visual.</p>
@@ -357,19 +257,20 @@
             </div>
         </div>
     </section>
+    <!-- /SERVIÇOS -->
 
-    <!-- Diferenciais (areia) -->
+    <!-- ===== DIFERENCIAIS (#diferenciais) ===== -->
     <section id="diferenciais" class="py-20 bg-sand text-leather">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <h2 class="font-serif text-3xl sm:text-4xl font-bold">Por que a Barbearia WM?</h2>
-                <div class="divider justify-center mt-4 text-terracotta"><i class="fa-solid fa-scissors"></i></div>
+                <div class="divider justify-center mt-4 text-terracotta"><i class="icone icone-scissors"></i></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-marble stitch-dark p-8 rounded-xl text-center space-y-4 card-lift group">
                     <div class="w-16 h-16 rounded-full bg-leather flex items-center justify-center text-bronzeLight text-2xl mx-auto transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                        <i class="fa-solid fa-person-walking"></i>
+                        <i class="icone icone-person-walking"></i>
                     </div>
                     <h3 class="font-serif text-xl font-bold">Ordem de chegada</h3>
                     <p class="text-leather/75 text-sm leading-relaxed">Sem agendamento. Chegou, entrou na fila e foi atendido na sua vez.</p>
@@ -377,7 +278,7 @@
 
                 <div class="bg-marble stitch-dark p-8 rounded-xl text-center space-y-4 card-lift group">
                     <div class="w-16 h-16 rounded-full bg-leather flex items-center justify-center text-bronzeLight text-2xl mx-auto transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                        <i class="fa-solid fa-award"></i>
+                        <i class="icone icone-award"></i>
                     </div>
                     <h3 class="font-serif text-xl font-bold">Profissionais experientes</h3>
                     <p class="text-leather/75 text-sm leading-relaxed">Equipe qualificada, com técnica apurada e atenção a cada detalhe do acabamento.</p>
@@ -385,7 +286,7 @@
 
                 <div class="bg-marble stitch-dark p-8 rounded-xl text-center space-y-4 card-lift group">
                     <div class="w-16 h-16 rounded-full bg-leather flex items-center justify-center text-bronzeLight text-2xl mx-auto transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                        <i class="fa-solid fa-tags"></i>
+                        <i class="icone icone-tags"></i>
                     </div>
                     <h3 class="font-serif text-xl font-bold">Preço justo</h3>
                     <p class="text-leather/75 text-sm leading-relaxed">Valores claros e acessíveis, a partir de R$ 15,00. Sem surpresas na hora de pagar.</p>
@@ -393,36 +294,37 @@
             </div>
         </div>
     </section>
+    <!-- /DIFERENCIAIS -->
 
-    <!-- Contato -->
+    <!-- ===== CONTATO (#contato) ===== -->
     <section id="contato" class="py-20 bg-leather leather-texture">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
                 <div class="space-y-6">
                     <h2 class="font-serif text-3xl font-bold text-marble">Venha nos visitar</h2>
-                    <div class="divider left text-bronze"><i class="fa-solid fa-scissors"></i></div>
+                    <div class="divider left text-bronze"><i class="icone icone-scissors"></i></div>
                     <p class="text-sand/85 text-sm leading-relaxed">
                         Não é preciso agendar: basta chegar. Se tiver qualquer dúvida sobre serviços ou funcionamento, fale com a gente pelo WhatsApp.
                     </p>
 
                     <div class="space-y-5 pt-2">
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-leatherDeep border border-bronze/40 flex items-center justify-center text-bronze shrink-0 transition-transform duration-300 hover:scale-110 hover:rotate-6"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="w-10 h-10 rounded-lg bg-leatherDeep border border-bronze/40 flex items-center justify-center text-bronze shrink-0 transition-transform duration-300 hover:scale-110 hover:rotate-6"><i class="icone icone-location-dot"></i></div>
                             <div>
                                 <h4 class="font-bold text-sm text-marble">Endereço</h4>
                                 <a href="https://maps.app.goo.gl/kN9mAYPs7R5gHRbcA" target="_blank" rel="noopener" class="text-xs text-sand/70 hover:text-bronzeLight transition-colors">R. Dilermando Réis, 921 - Santa Lúcia, Maceió - AL</a>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-leatherDeep border border-bronze/40 flex items-center justify-center text-bronze shrink-0 transition-transform duration-300 hover:scale-110 hover:rotate-6"><i class="fa-solid fa-phone"></i></div>
+                            <div class="w-10 h-10 rounded-lg bg-leatherDeep border border-bronze/40 flex items-center justify-center text-bronze shrink-0 transition-transform duration-300 hover:scale-110 hover:rotate-6"><i class="icone icone-phone"></i></div>
                             <div>
                                 <h4 class="font-bold text-sm text-marble">Telefone e WhatsApp</h4>
                                 <a href="tel:82987498857" class="text-xs text-sand/70 hover:text-bronzeLight transition-colors">(82) 98749-8857</a>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-leatherDeep border border-bronze/40 flex items-center justify-center text-bronze shrink-0 transition-transform duration-300 hover:scale-110 hover:rotate-6"><i class="fa-solid fa-clock"></i></div>
+                            <div class="w-10 h-10 rounded-lg bg-leatherDeep border border-bronze/40 flex items-center justify-center text-bronze shrink-0 transition-transform duration-300 hover:scale-110 hover:rotate-6"><i class="icone icone-clock"></i></div>
                             <div>
                                 <h4 class="font-bold text-sm text-marble">Horário de funcionamento</h4>
                                 <p class="text-xs text-sand/70">Terça a Sábado: 08:00 - 20:00</p>
@@ -430,7 +332,7 @@
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-leatherDeep border border-bronze/40 flex items-center justify-center text-bronze shrink-0 transition-transform duration-300 hover:scale-110 hover:rotate-6"><i class="fa-brands fa-instagram"></i></div>
+                            <div class="w-10 h-10 rounded-lg bg-leatherDeep border border-bronze/40 flex items-center justify-center text-bronze shrink-0 transition-transform duration-300 hover:scale-110 hover:rotate-6"><i class="icone icone-instagram"></i></div>
                             <div>
                                 <h4 class="font-bold text-sm text-marble">Instagram</h4>
                                 <a href="https://www.instagram.com/barbearia_wm21/" target="_blank" rel="noopener" class="text-xs text-sand/70 hover:text-bronzeLight transition-colors">@barbearia_wm21</a>
@@ -441,7 +343,7 @@
 
                 <div class="bg-leatherCard stitch p-8 rounded-2xl shadow-xl text-center space-y-5">
                     <div class="w-16 h-16 rounded-full bg-leatherDeep border border-bronze/50 p-1 flex items-center justify-center mx-auto">
-                        <img src="imgs/image-removebg-preview (1).png" alt="Barbearia WM" class="w-full h-full object-contain">
+                        <img src="imgs/logo.webp" alt="Barbearia WM" class="w-full h-full object-contain">
                     </div>
                     <h3 class="font-serif text-xl font-bold text-marble">Ficou com alguma dúvida?</h3>
                     <p class="text-sand/80 text-sm leading-relaxed">
@@ -449,25 +351,26 @@
                     </p>
                     <a href="https://wa.me/5582987498857?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Barbearia%20WM." target="_blank" rel="noopener"
                        class="w-full bronze-gradient-bg text-leatherDeep font-bold py-3.5 px-6 rounded-lg text-sm flex items-center justify-center gap-2 hover:shadow-lg transition-all">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> Falar no WhatsApp
+                        <i class="icone icone-whatsapp text-lg"></i> Falar no WhatsApp
                     </a>
                     <a href="https://maps.app.goo.gl/kN9mAYPs7R5gHRbcA" target="_blank" rel="noopener"
                        class="w-full border border-bronze/60 text-bronzeLight hover:bg-bronze/10 font-semibold py-3.5 px-6 rounded-lg text-sm flex items-center justify-center gap-2 transition-all">
-                        <i class="fa-solid fa-map-location-dot"></i> Abrir no mapa
+                        <i class="icone icone-map-location-dot"></i> Abrir no mapa
                     </a>
                 </div>
 
             </div>
         </div>
     </section>
+    <!-- /CONTATO -->
 
-    <!-- Rodapé -->
+    <!-- ===== RODAPÉ ===== -->
     <footer class="bg-leatherDeep border-t border-bronze/25 py-12 text-sand/70 text-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="flex items-center gap-3">
                     <div class="w-12 h-12 rounded-full border border-bronze/50 bg-leather p-1 flex items-center justify-center">
-                        <img src="imgs/image-removebg-preview (1).png" alt="Logo Barbearia WM" class="w-full h-full object-contain">
+                        <img src="imgs/logo.webp" alt="Logo Barbearia WM" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <span class="font-serif text-lg font-bold text-bronzeLight block leading-tight">BARBEARIA WM</span>
@@ -480,92 +383,26 @@
                 </div>
 
                 <div class="flex gap-4 text-bronze">
-                    <a href="https://www.instagram.com/barbearia_wm21/" target="_blank" rel="noopener" aria-label="Instagram" class="w-9 h-9 rounded-full bg-leather border border-bronze/30 flex items-center justify-center hover:bg-bronze hover:text-leatherDeep transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://wa.me/5582987498857?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Barbearia%20WM." target="_blank" rel="noopener" aria-label="WhatsApp" class="w-9 h-9 rounded-full bg-leather border border-bronze/30 flex items-center justify-center hover:bg-bronze hover:text-leatherDeep transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/barbearia_wm21/" target="_blank" rel="noopener" aria-label="Instagram" class="w-9 h-9 rounded-full bg-leather border border-bronze/30 flex items-center justify-center hover:bg-bronze hover:text-leatherDeep transition-colors"><i class="icone icone-instagram"></i></a>
+                    <a href="https://wa.me/5582987498857?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Barbearia%20WM." target="_blank" rel="noopener" aria-label="WhatsApp" class="w-9 h-9 rounded-full bg-leather border border-bronze/30 flex items-center justify-center hover:bg-bronze hover:text-leatherDeep transition-colors"><i class="icone icone-whatsapp"></i></a>
                 </div>
             </div>
         </div>
     </footer>
+    <!-- /RODAPÉ -->
 
-    <!-- WhatsApp flutuante -->
+    <!-- ===== WHATSAPP FLUTUANTE ===== -->
     <a href="https://wa.me/5582987498857?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Barbearia%20WM." target="_blank" rel="noopener"
        class="fixed bottom-6 right-6 z-50 bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:bg-green-500 hover:scale-110 transition-all border-2 border-white/20"
        title="Falar no WhatsApp" aria-label="Falar no WhatsApp">
         <span class="absolute inset-0 rounded-full bg-green-500/50 animate-ping -z-10"></span>
-        <i class="fa-brands fa-whatsapp"></i>
+        <i class="icone icone-whatsapp"></i>
     </a>
+    <!-- /WHATSAPP FLUTUANTE -->
 
-    <script>
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.toggle('hidden');
-            mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
-        });
-
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
-
-        // Destaque do menu conforme a seção visível
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('nav .nav-link, #mobileMenu .mobile-nav-link');
-
-            function setActiveSection(id) {
-                navLinks.forEach(link => {
-                    link.classList.toggle('active-nav', link.getAttribute('data-section') === id);
-                });
-            }
-
-            const visiveis = new Set();   // Set = lista sem repetição
-
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) visiveis.add(entry.target);
-                    else visiveis.delete(entry.target);
-                });
-                const atual = [...sections].findLast(s => visiveis.has(s));  // a mais de baixo
-                if (atual) setActiveSection(atual.id);
-            }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
-
-            sections.forEach(s => observer.observe(s));
-
-            window.addEventListener('scroll', () => {
-                if (window.scrollY < 100) {
-                    setActiveSection('inicio');
-                } else if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-                    setActiveSection('contato');
-                }
-            });
-        });
-
-        // Revelar elementos ao rolar + barra de progresso
-        document.addEventListener('DOMContentLoaded', () => {
-            const targets = document.querySelectorAll(
-                '#sobre .grid > div, #servicos .text-center, #servicos .grid > div, ' +
-                '#diferenciais .text-center, #diferenciais .grid > div, #contato .grid > div'
-            );
-            const revealObs = new IntersectionObserver((entries) => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
-                });
-            }, { threshold: 0.15 });
-
-            targets.forEach(el => {
-                const idx = Array.from(el.parentElement.children).indexOf(el);
-                el.style.setProperty('--d', (idx * 0.12) + 's');
-                el.classList.add('reveal');
-                revealObs.observe(el);
-            });
-
-            const bar = document.getElementById('scrollBar');
-            window.addEventListener('scroll', () => {
-                const h = document.documentElement.scrollHeight - window.innerHeight;
-                bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
-            }, { passive: true });
-        });
-    </script>
+    <script src="js/menu-mobile.js"></script>
+    <script src="js/nav-ativa.js"></script>
+    <script src="js/revelar-scroll.js"></script>
+    <script src="js/barra-progresso.js"></script>
 </body>
 </html>

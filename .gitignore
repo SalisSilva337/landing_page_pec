@@ -1,2 +1,5 @@
 # Configuração pessoal do Claude Code
 .claude/settings.local.json
+
+# Executável do Tailwind CLI (baixado à parte, ver README)
+tools/

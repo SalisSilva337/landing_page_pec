@@ -9,15 +9,36 @@ Além de servir à barbearia, o repositório é um **projeto de estudo de front-
 Não precisa instalar nada.
 
 1. Clone o repositório.
-2. Dê dois cliques em `barbearia_wm_landing_page.html` **ou** abra a pasta no VS Code e use "Open with Live Server".
+2. Dê dois cliques em `index.html` **ou** abra a pasta no VS Code e use "Open with Live Server".
 
-Precisa de internet: Tailwind, fontes e ícones vêm de CDN.
+Precisa de internet só para as fontes (Google Fonts).
+
+## Tailwind: gerar o CSS
+
+As classes do Tailwind (`p-6`, `bg-leather`, `md:flex`...) viram CSS em `css/tailwind.css`. Esse arquivo é **gerado** e fica commitado, por isso a página abre sem instalar nada.
+
+Só precisa gerar de novo quando você **usar uma classe do Tailwind que ainda não aparece no projeto** ou mudar `tailwind.config.js`. Sem isso, a classe nova simplesmente não tem efeito.
+
+1. Baixe o Tailwind CLI **v3.4.17** (executável único, sem Node/npm) em [github.com/tailwindlabs/tailwindcss/releases/tag/v3.4.17](https://github.com/tailwindlabs/tailwindcss/releases/tag/v3.4.17): `tailwindcss-windows-x64.exe`, `tailwindcss-macos-arm64` ou `tailwindcss-linux-x64`. Salve como `tools/tailwindcss.exe` (Windows) ou `tools/tailwindcss` (Mac/Linux, depois `chmod +x`). A pasta `tools/` é ignorada pelo Git.
+2. Na raiz do projeto:
+   ```
+   tools/tailwindcss -i tailwind.input.css -o css/tailwind.css
+   ```
+   Durante o desenvolvimento, `--watch` no fim do comando regenera a cada salvamento.
+3. Commite o `css/tailwind.css` junto com a mudança no HTML.
+
+Não use `--minify`: ele converte as cores para `hsla()` com arredondamento, e a cor muda levemente. A versão é fixa em 3.4.17 porque a v4 renomeia classes e muda a configuração.
 
 ## O que tem aqui
 
 ```
-barbearia_wm_landing_page.html   a página inteira (HTML + CSS + JS, por enquanto)
+index.html                       estrutura da página (HTML)
+css/                             CSS próprio (base, texturas, componentes, animações, ícones) e o tailwind.css gerado
+js/                              os 4 scripts da página
 imgs/                            logo da barbearia
+tailwind.config.js               Tailwind: onde procurar classes, cores da marca e fontes
+tailwind.input.css               entrada do Tailwind CLI (gera css/tailwind.css)
+tools/                           Tailwind CLI baixado (fora do Git)
 docs/
   MAPA.md         o que existe na página, seção por seção, e onde está no código
   GLOSSARIO.md    termos de front-end que aparecem no projeto, explicados
@@ -30,10 +51,11 @@ CLAUDE.md                        ponteiro para AGENTS.md (Claude Code)
 ## Tecnologias
 
 - **HTML5** semântico.
-- **Tailwind CSS** carregado via CDN (sem build). As cores da marca e as fontes estão em `tailwind.config` dentro do `<head>`.
+- **Tailwind CSS** v3, compilado com o Tailwind CLI para `css/tailwind.css` (ver "Tailwind: gerar o CSS"). As cores da marca e as fontes estão em `tailwind.config.js`.
 - **CSS próprio** para o que o Tailwind não cobre: texturas de couro e mármore, animações, sublinhado do menu.
 - **JavaScript puro** para: menu mobile, destaque do link ativo, animação de entrada ao rolar e barra de progresso.
-- Fontes **Cinzel** e **Montserrat** (Google Fonts) e ícones **Font Awesome 6**.
+- Fontes **Cinzel** e **Montserrat** (Google Fonts).
+- Ícones em **SVG** embutidos em `css/icones.css` (desenhos do Font Awesome Free 6.4, licença CC BY 4.0).
 
 ## To-do
 
@@ -55,22 +77,22 @@ js/
   revelar-scroll.js    animação de entrada dos blocos ao rolar
   barra-progresso.js   barra de 3px no topo
 imgs/
-  logo.png
+  logo.webp
 ```
 
-- [ ] Renomear `barbearia_wm_landing_page.html` → `index.html`
-- [ ] Renomear o logo para `imgs/logo.png` e atualizar as 6 referências
-- [ ] Extrair `tailwind.config` para `js/tailwind.config.js`
-- [ ] Extrair o CSS para `css/` (4 arquivos)
-- [ ] Extrair o JS para `js/` (4 arquivos)
-- [ ] Padronizar os comentários de seção no HTML
-- [ ] Atualizar `docs/MAPA.md` com os arquivos e linhas novos
+- [x] Renomear `barbearia_wm_landing_page.html` → `index.html`
+- [x] Renomear o logo para `imgs/logo.png` e atualizar as 6 referências
+- [x] Extrair `tailwind.config` para `js/tailwind.config.js`
+- [x] Extrair o CSS para `css/` (4 arquivos)
+- [x] Extrair o JS para `js/` (4 arquivos)
+- [x] Padronizar os comentários de seção no HTML (padrão no `AGENTS.md`)
+- [x] Atualizar `docs/MAPA.md` com os arquivos e linhas novos
 
 ### Deixar pronto para produção
 
-- [ ] Trocar o Tailwind Play CDN por CSS compilado (exige build; decisão do time)
+- [x] Trocar o Tailwind Play CDN por CSS compilado (Tailwind CLI standalone, CSS gerado commitado)
 - [ ] Adicionar meta tags Open Graph para o link ter preview no WhatsApp e redes
-- [ ] Comprimir e redimensionar o logo (hoje 1,5 MB)
+- [x] Comprimir e redimensionar o logo (1,5 MB → 111 KB, WebP 640×640)
 - [ ] Publicar no GitHub Pages (depende de `index.html`)
 
 ### Funcionalidades novas (ideias, sem compromisso)
@@ -85,24 +107,18 @@ O que não está pronto para produção, em ordem de impacto:
 
 | Item | Por que importa |
 |---|---|
-| **Tailwind Play CDN** | Gera o CSS no navegador a cada carregamento. É versão de desenvolvimento: pesada, lenta no primeiro paint e avisa no console que não deve ir para produção. |
-| **Arquivo único de 571 linhas** | CSS e JS embutidos no HTML. Difícil de ler, revisar e dividir trabalho. |
 | **Sem meta Open Graph** | O botão principal do site manda para o WhatsApp, mas o link do site, quando compartilhado no WhatsApp, aparece sem imagem nem descrição. |
-| **Logo `imgs/image-removebg-preview (1).png`** | Nome com espaço e parênteses quebra em URLs e alguns servidores. 1,5 MB para um logo. Referenciado 6 vezes. |
-| **`imgs/image-removebg-preview.png`** | Não é referenciado em lugar nenhum. Candidato a remoção, confirmar com o time. |
-| **Sem `index.html`** | GitHub Pages e servidores comuns não abrem a página direto. |
 | **URL do WhatsApp repetida 7 vezes** | Trocar o número exige localizar e substituir em 7 lugares. |
-| **Dois blocos `prefers-reduced-motion`** | Mesma regra espalhada em dois lugares do CSS. Unificar quando o CSS for separado. |
-| **`findLast` no JS do menu** | Exige navegador de 2022 em diante (Chrome 97+, Safari 15.4+). Em navegador antigo, o destaque do menu quebra. |
 | **Copyright "2021–2026" fixo** | Precisa de edição manual todo ano. |
-| **Dependência total de CDN** | Sem internet, a página abre sem estilo, fontes e ícones. |
+| **Fontes via CDN** | Sem internet, os textos caem para a fonte padrão do sistema (layout, cores e ícones ficam, porque são locais). |
 
 ## Como contribuir
 
 1. Crie uma branch a partir de `main`: `git checkout -b tipo/descricao-curta` (`docs/`, `refactor/`, `fix/`, `feat/`).
 2. Uma mudança por commit, mensagem em português no imperativo: `Extrai CSS de texturas para css/texturas.css`.
-3. Antes de abrir o PR, abra a página no navegador e confira: console sem erro, menu mobile, destaque do menu ao rolar, animações, links.
-4. Se concluiu um item do to-do, marque aqui.
+3. Usou classe nova do Tailwind? Gere o `css/tailwind.css` de novo (ver "Tailwind: gerar o CSS").
+4. Antes de abrir o PR, abra a página no navegador e confira: console sem erro, menu mobile, destaque do menu ao rolar, animações, links.
+5. Se concluiu um item do to-do, marque aqui.
 
 ## Créditos
 

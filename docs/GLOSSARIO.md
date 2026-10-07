@@ -16,14 +16,17 @@ Framework de CSS baseado em **classes utilitárias**: em vez de criar uma classe
 Uma classe CSS que aplica **uma** propriedade. `p-6` = padding de 1.5rem; `hidden` = `display: none`; `text-center` = texto centralizado. Tailwind é feito disso.
 
 ### CDN (Content Delivery Network)
-Servidor público que entrega arquivos prontos (bibliotecas, fontes). Em vez de baixar o Tailwind e colocar no projeto, a página pega de `cdn.tailwindcss.com`.
-**Aqui:** Tailwind, Google Fonts, Font Awesome. **Por quê:** zero instalação. **Custo:** precisa de internet para abrir a página.
+Servidor público que entrega arquivos prontos (bibliotecas, fontes). Em vez de baixar a biblioteca e colocar no projeto, a página pega de um endereço público.
+**Aqui:** Google Fonts. O Tailwind e o Font Awesome já vieram de CDN; hoje o Tailwind é compilado (ver "Build") e os ícones são SVG em `css/icones.css`. **Por quê:** zero instalação. **Custo:** precisa de internet para abrir a página.
 
 ### Play CDN do Tailwind
-A versão do Tailwind que roda **no navegador**: lê o HTML, vê quais classes você usou e gera o CSS na hora. É para desenvolvimento e projetos pequenos; em produção normalmente se compila um CSS fixo. Decisão do projeto: manter, porque não há build.
+A versão do Tailwind que roda **no navegador**: lê o HTML, vê quais classes você usou e gera o CSS na hora, a cada visita. É para desenvolvimento; em produção se compila um CSS fixo. Este projeto usou até trocar pelo Tailwind CLI.
+
+### Build
+Um passo automático que transforma os arquivos que você escreve nos arquivos que o navegador recebe. **Aqui:** o Tailwind CLI lê `index.html` e `js/`, vê as classes usadas e gera `css/tailwind.css` só com elas. O resultado é commitado, então quem só quer abrir a página não precisa rodar nada.
 
 ### `tailwind.config`
-Objeto JavaScript que estende o Tailwind. Aqui adiciona as cores da marca (`leather`, `bronze`, `sand`...) e as fontes (`font-serif` = Cinzel, `font-sans` = Montserrat). Depois disso, `bg-leather` e `text-bronze` passam a existir como classes.
+Arquivo `tailwind.config.js`, lido pelo Tailwind CLI. Diz onde procurar classes (`content`) e estende o Tailwind. Aqui adiciona as cores da marca (`leather`, `bronze`, `sand`...) e as fontes (`font-serif` = Cinzel, `font-sans` = Montserrat). Depois disso, `bg-leather` e `text-bronze` passam a existir como classes.
 
 ### Breakpoints / prefixos responsivos (`sm:`, `md:`, `lg:`)
 No Tailwind, `md:flex` significa "a partir de 768px de largura, use `display: flex`". Sem prefixo, vale para todas as larguras. Tailwind é **mobile-first**: você escreve o estilo do celular e vai adicionando prefixos para telas maiores.
@@ -57,7 +60,7 @@ Atributos de acessibilidade. `aria-label="Abrir menu"` dá nome a um botão que 
 
 ### `prefers-reduced-motion`
 Media query que detecta se a pessoa pediu ao sistema operacional para reduzir animações (enjoo, epilepsia, preferência). O CSS então desliga as animações.
-**Aqui:** linhas 117–121 e 124. **Por quê:** acessibilidade; é boa prática em todo site com animação.
+**Aqui:** `css/base.css`. **Por quê:** acessibilidade; é boa prática em todo site com animação.
 
 ### `:focus-visible`
 Pseudo-classe que aplica estilo quando o elemento recebe foco **pelo teclado** (Tab), mas não pelo clique do mouse. Permite dar contorno para quem navega por teclado sem "sujar" o clique.
@@ -99,7 +102,7 @@ Evento disparado quando o HTML terminou de ser lido (antes de imagens carregarem
 
 ### `defer` (no `<script src>`)
 Diz ao navegador: baixe o script em paralelo, mas só execute depois que o HTML terminar de ser lido. Equivale a colocar o script no fim do `<body>`, mas pode ficar no `<head>`.
-**Aqui:** será usado quando o JS for separado em arquivos.
+**Aqui:** não usado. Os `<script src>` de `js/` ficam no fim do `<body>`, que tem o mesmo efeito.
 
 ### `{ passive: true }` (em `addEventListener`)
 Promessa ao navegador de que o handler **não** vai chamar `preventDefault()`. Com isso o navegador não precisa esperar o handler terminar para rolar a página — scroll mais fluido.
